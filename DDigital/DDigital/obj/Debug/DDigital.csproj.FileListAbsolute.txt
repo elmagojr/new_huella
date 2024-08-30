@@ -1,0 +1,29 @@
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.AssemblyReference.cache
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Main_Menu.resources
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.GenerateResource.cache
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe.config
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.pdb
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Properties.Resources.resources
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.CoreCompileInputs.cache
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
+D:\DESAROLLO\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe.config
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.pdb
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.AssemblyReference.cache
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Main_Menu.resources
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Properties.Resources.resources
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.GenerateResource.cache
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.CoreCompileInputs.cache
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
