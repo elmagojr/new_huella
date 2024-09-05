@@ -40,4 +40,17 @@ namespace DDigital.Utilidades
         public string TIPO { get; set; }  
 
     }
+
+    public class CREDENCIALES
+    {
+        public string codigo { get; set; }
+        public string nombre { get; set; }
+        public string identidad { get; set; }
+        public string fromAction { get; set; }
+        public string cta { get; set; }
+        public string cia { get; set; }
+        public string fil { get; set; }
+        //subidentificador
+        public string usr_logged { get; set; } //ESTO PARA INICIAR SESION
+    }
 }

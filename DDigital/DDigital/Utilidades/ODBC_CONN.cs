@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DDigital.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
@@ -16,6 +17,7 @@ namespace ProyectoDIGITALPERSONA
         OdbcConnection db_con;
         private string UID = "HID";
         private string PWD = "hid@123456";
+        UTILIDADES UT = new UTILIDADES();
         public ODBC_CONN() {
             connectionString = string.Format("DSN=SISC;UID={0};PWD={1};", UID, PWD);
             db_con = new OdbcConnection(connectionString);
@@ -41,7 +43,7 @@ namespace ProyectoDIGITALPERSONA
         }
 
               
-        public int EjecutarParametrizada(string sql, Dictionary<string, object> parametros = null)
+        public int EjecutarParametrizada(string sql, Dictionary<string, object> parametros = null) //DB00001
         {
             int rowAffected = 0;
             try
@@ -66,7 +68,7 @@ namespace ProyectoDIGITALPERSONA
             }
             catch (Exception E)
             {
-                MessageBox.Show("ERROR BD USING #3" + E, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(UT.HAS_ERROS("DB00001") + E.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
             {
@@ -107,7 +109,7 @@ namespace ProyectoDIGITALPERSONA
             }
             catch (Exception E)
             {
-                MessageBox.Show("ERROR BD USING #4 " + E, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(UT.HAS_ERROS("DB00002") + E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Console.WriteLine("Error en la consulta SELECT: " + E.Message);
             }
             finally
@@ -147,7 +149,7 @@ namespace ProyectoDIGITALPERSONA
             }
             catch (Exception E)
             {
-                MessageBox.Show("ERROR BD USING #5" + E, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(UT.HAS_ERROS("DB00003") + E.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
             {
@@ -158,7 +160,8 @@ namespace ProyectoDIGITALPERSONA
 
         public bool SelectExisteElvalor( string consulta, Dictionary<string, string> ValorComparar= null)
         {
-            
+            try
+            {
                 using (db_con)
                 {
                     db_con.Open();
@@ -179,7 +182,14 @@ namespace ProyectoDIGITALPERSONA
                         }
                     }
 
-                }            
+                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(UT.HAS_ERROS("DB00004") + E.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+                           
         }
 
       

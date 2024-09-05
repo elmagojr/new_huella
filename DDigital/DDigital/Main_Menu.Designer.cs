@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Menu));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -49,12 +50,19 @@
             this.btn_cancel_enrol = new System.Windows.Forms.Button();
             this.btn_registrar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_observacion = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.lbl_estado = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_huella)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -99,9 +107,9 @@
             // radio_I2
             // 
             this.radio_I2.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radio_I2.Location = new System.Drawing.Point(190, 55);
+            this.radio_I2.Location = new System.Drawing.Point(186, 55);
             this.radio_I2.Name = "radio_I2";
-            this.radio_I2.Size = new System.Drawing.Size(22, 115);
+            this.radio_I2.Size = new System.Drawing.Size(26, 115);
             this.radio_I2.TabIndex = 6;
             this.radio_I2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.radio_I2.UseVisualStyleBackColor = true;
@@ -132,9 +140,9 @@
             // radio_I5
             // 
             this.radio_I5.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radio_I5.Location = new System.Drawing.Point(40, 89);
+            this.radio_I5.Location = new System.Drawing.Point(33, 89);
             this.radio_I5.Name = "radio_I5";
-            this.radio_I5.Size = new System.Drawing.Size(20, 81);
+            this.radio_I5.Size = new System.Drawing.Size(30, 81);
             this.radio_I5.TabIndex = 1;
             this.radio_I5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.radio_I5.UseVisualStyleBackColor = true;
@@ -145,7 +153,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(303, 328);
+            this.pictureBox1.Size = new System.Drawing.Size(303, 323);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -187,9 +195,9 @@
             // radio_D5
             // 
             this.radio_D5.CheckAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.radio_D5.Location = new System.Drawing.Point(253, 85);
+            this.radio_D5.Location = new System.Drawing.Point(248, 86);
             this.radio_D5.Name = "radio_D5";
-            this.radio_D5.Size = new System.Drawing.Size(20, 74);
+            this.radio_D5.Size = new System.Drawing.Size(33, 74);
             this.radio_D5.TabIndex = 6;
             this.radio_D5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.radio_D5.UseVisualStyleBackColor = true;
@@ -252,6 +260,7 @@
             // 
             // label1
             // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 258);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 34);
@@ -271,9 +280,10 @@
             // 
             // btn_registrar
             // 
-            this.btn_registrar.Location = new System.Drawing.Point(667, 461);
+            this.btn_registrar.Enabled = false;
+            this.btn_registrar.Location = new System.Drawing.Point(635, 59);
             this.btn_registrar.Name = "btn_registrar";
-            this.btn_registrar.Size = new System.Drawing.Size(120, 23);
+            this.btn_registrar.Size = new System.Drawing.Size(144, 42);
             this.btn_registrar.TabIndex = 6;
             this.btn_registrar.Text = "Registrar";
             this.btn_registrar.UseVisualStyleBackColor = true;
@@ -281,7 +291,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(635, 164);
+            this.button1.Location = new System.Drawing.Point(635, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 7;
@@ -289,11 +299,73 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txt_observacion);
+            this.groupBox2.Location = new System.Drawing.Point(16, 505);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(771, 94);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Observaciones (Opcional)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 27);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 16);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Observación";
+            // 
+            // txt_observacion
+            // 
+            this.txt_observacion.Enabled = false;
+            this.txt_observacion.Location = new System.Drawing.Point(105, 23);
+            this.txt_observacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_observacion.Multiline = true;
+            this.txt_observacion.Name = "txt_observacion";
+            this.txt_observacion.Size = new System.Drawing.Size(483, 52);
+            this.txt_observacion.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(687, 607);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 28);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Salir";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // lbl_estado
+            // 
+            this.lbl_estado.AutoSize = true;
+            this.lbl_estado.Location = new System.Drawing.Point(9, 621);
+            this.lbl_estado.Name = "lbl_estado";
+            this.lbl_estado.Size = new System.Drawing.Size(16, 16);
+            this.lbl_estado.TabIndex = 18;
+            this.lbl_estado.Text = "...";
+            this.lbl_estado.Click += new System.EventHandler(this.lbl_estado_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Main_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 646);
+            this.Controls.Add(this.lbl_estado);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_registrar);
             this.Controls.Add(this.btn_cancel_enrol);
@@ -310,7 +382,10 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_huella)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -335,6 +410,12 @@
         private System.Windows.Forms.Button btn_cancel_enrol;
         private System.Windows.Forms.Button btn_registrar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_observacion;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lbl_estado;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

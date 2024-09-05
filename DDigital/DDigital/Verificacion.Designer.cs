@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_verifique = new System.Windows.Forms.Label();
             this.btn_lista_hue = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.txt_tipo = new System.Windows.Forms.TextBox();
@@ -42,7 +42,7 @@
             this.txt_codigo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl_principal = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_identidad = new System.Windows.Forms.TextBox();
             this.txt_nombre = new System.Windows.Forms.TextBox();
@@ -51,15 +51,15 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label4
+            // lbl_verifique
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 191);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 34);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Verifique";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_verifique.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_verifique.Location = new System.Drawing.Point(20, 191);
+            this.lbl_verifique.Name = "lbl_verifique";
+            this.lbl_verifique.Size = new System.Drawing.Size(158, 34);
+            this.lbl_verifique.TabIndex = 17;
+            this.lbl_verifique.Text = "Verifique";
+            this.lbl_verifique.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_lista_hue
             // 
@@ -81,6 +81,7 @@
             this.btn_cancelar.TabIndex = 14;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // txt_tipo
             // 
@@ -150,6 +151,7 @@
             this.btn_confirmar.TabIndex = 13;
             this.btn_confirmar.Text = "Confirmar";
             this.btn_confirmar.UseVisualStyleBackColor = true;
+            this.btn_confirmar.Click += new System.EventHandler(this.btn_confirmar_Click);
             // 
             // v_pictureBox1
             // 
@@ -191,17 +193,17 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Identidad:";
             // 
-            // label7
+            // lbl_principal
             // 
-            this.label7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(13, 9);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(681, 30);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Debe poner el dedo en el lector de huellas";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_principal.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_principal.ForeColor = System.Drawing.Color.Black;
+            this.lbl_principal.Location = new System.Drawing.Point(13, 9);
+            this.lbl_principal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_principal.Name = "lbl_principal";
+            this.lbl_principal.Size = new System.Drawing.Size(681, 30);
+            this.lbl_principal.TabIndex = 16;
+            this.lbl_principal.Text = "Debe poner el dedo en el lector de huellas";
+            this.lbl_principal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
@@ -259,15 +261,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 370);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_verifique);
             this.Controls.Add(this.btn_lista_hue);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_confirmar);
             this.Controls.Add(this.v_pictureBox1);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbl_principal);
             this.Controls.Add(this.groupBox1);
             this.Name = "Verificacion";
             this.Text = "Verificacion";
+            this.Load += new System.EventHandler(this.Verificacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.v_pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -277,7 +280,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_verifique;
         private System.Windows.Forms.Button btn_lista_hue;
         private System.Windows.Forms.Button btn_cancelar;
         public System.Windows.Forms.TextBox txt_tipo;
@@ -291,7 +294,7 @@
         public System.Windows.Forms.TextBox txt_codigo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl_principal;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.TextBox txt_identidad;
         public System.Windows.Forms.TextBox txt_nombre;

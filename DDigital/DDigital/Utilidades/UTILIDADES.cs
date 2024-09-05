@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using DPUruNet;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace DDigital.Utilidades
 {
@@ -91,6 +92,113 @@ namespace DDigital.Utilidades
                 default: return "N/a";
             }
         }
+
+
+        public CREDENCIALES LEER_CREDENCIALES()
+        {
+            CREDENCIALES credencials = new CREDENCIALES();
+            string path = @"C:\SISC\Addons\DDigital\ENLACE.txt";
+
+            try
+            {
+                if (File.Exists(path))
+                {
+                    string[] credo = File.ReadAllLines(path);
+                    if (credo.Length == 0)
+                    {
+                        credencials = null;
+                    }
+                    else
+                    {
+                        foreach (string lineaCred in credo)
+                        {
+                            string[] credencial = lineaCred.Split(',');
+                            foreach (string item in credencial)
+                            {
+                                string[] partes = item.Split(':');
+                                switch (partes[0].Trim())
+                                {
+                                    case "codigo":
+                                        credencials.codigo = partes[1].Trim();
+                                        break;
+                                    case "nombre":
+                                        credencials.nombre = partes[1].Trim();
+                                        break;
+                                    case "identidad":
+                                        credencials.identidad = partes[1].Trim();
+                                        break;
+                                    case "fromAction":
+                                        credencials.fromAction = partes[1].Trim();
+                                        break;
+                                    case "usr_logged":
+                                        credencials.usr_logged = partes[1].Trim();
+                                        break;
+                                    case "cta":
+                                        credencials.cta = partes[1].Trim();
+                                        break;
+                                    case "cia":
+                                        credencials.cia = partes[1].Trim();
+                                        break;
+                                    case "fil":
+                                        credencials.fil = partes[1].Trim();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+
+                        }
+                        File.WriteAllText(path, string.Empty);
+                    }
+
+                    return credencials;
+                }
+                else
+                {
+                    MessageBox.Show(HAS_ERROS("IO0001"), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return null;
+
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public string HAS_ERROS(string code)
+        {
+            switch (code)
+            {             
+                case "IO0001":
+                    return "IO0001: No se puede leer las credeciales: Favor Contacte con soporte. Se Cerrará el Add-On ";
+                case "IO0002":
+                    return "Valor nulo para credenciales ";
+                case "HD00001":
+                    return "La huella que intenta registrar ya existe. ";
+                case "HD00002":
+                    return "No se pudo guardar la huella ";
+
+                case "DB00001":
+                    return "DB00001 Cosulta/Parametro: ";
+                case "DB00002":
+                    return "DB00002 Consulta: ";
+                case "DB00003":
+                    return "DB00003 Conteo / Consulta: ";
+                case "DB00004":
+                    return "DB00004 Cosulta/Parametro: ";
+
+                case "LE00001":
+                    return "LE00001 Letor de huellas desconectado ";
+                case "LE00002":
+                    return "LE00002 Se ha desconectado el lector o no se detecta ";
+                default:
+                    return "Unknow error ";
+                 
+            }
+        }
+
+
     }
 
     

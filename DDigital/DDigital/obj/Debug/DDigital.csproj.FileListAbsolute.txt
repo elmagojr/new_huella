@@ -27,3 +27,4 @@ D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtl
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.xml
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.xml
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Verificacion.resources

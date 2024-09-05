@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -22,8 +23,10 @@ namespace DDigital
 {
     public partial class Main_Menu : Form
     {
+        CREDENCIALES CRED_;
         Bitmap ultima_imagen_huella;
         public Reader _reader;
+        private Fmd fmd_Registro;
         List<Fmd> preenrollmentFmds;
         int count;
         bool cancel_enrol = false;
@@ -31,6 +34,20 @@ namespace DDigital
         UTILIDADES UT;
         HUELLA _HUELLA;
         QUERIES sql;
+        public string IDENTIDAD_FROM_OUT = "";
+
+        
+      
+
+
+
+
+
+
+
+
+
+
 
         public bool InitializeReader()
         {
@@ -55,13 +72,7 @@ namespace DDigital
            
         }
 
-        public bool Reset
-        {
-            get { return reset; }
-            set { reset = value; }
-        }
-        private bool reset;
-
+      
 
         public void GetStatus()
         {
@@ -91,9 +102,17 @@ namespace DDigital
         }
         public bool OpenReader()
         {
+            UT = new UTILIDADES();  
             //_reader = new Reader();
             _reader = ReaderCollection.GetReaders()[0];
 
+            
+            if (_reader==null)
+            {
+                MessageBox.Show(UT.HAS_ERROS("LE00001"));
+                Task.Run(() => CancelarEnrrol());
+                return false;
+            }
             using (Tracer tracer = new Tracer("Main_Menu::OpenReader"))
             {
                 //reset = false;
@@ -104,7 +123,7 @@ namespace DDigital
           
                 if (result != Constants.ResultCode.DP_SUCCESS)
                 {
-                    MessageBox.Show("Error:  Lector no conectado" + result);
+                    MessageBox.Show(UT.HAS_ERROS("LE00001") + result);
                     //reset = true;
                     return false;
                 }
@@ -118,6 +137,11 @@ namespace DDigital
             using (Tracer tracer = new Tracer("Main_Menu::StartCaptureAsync"))
             {
                 // Activate capture handler
+                //if (_reader!=null)
+                //{
+                //    lbl_estado.Text = "Lector de huellas no esta conectado";
+                //   // return false;   
+                //}
                 _reader.On_Captured += new Reader.CaptureCallback(OnCaptured);
 
                 // Call capture
@@ -136,7 +160,7 @@ namespace DDigital
             {
                 if (_reader != null)
                 {
-                     //Task.Run(() => _reader.CancelCapture());
+                    // Task.Run(() => _reader.CancelCapture());
                     _reader.CancelCapture();
 
                     // Dispose of reader handle and unhook reader events.
@@ -177,14 +201,21 @@ namespace DDigital
         }
         public bool CheckCaptureResult(CaptureResult captureResult)
         {
+            UT = new UTILIDADES();
             using (Tracer tracer = new Tracer("Main_Menu::CheckCaptureResult"))
             {
                 if (captureResult.Data == null || captureResult.ResultCode != Constants.ResultCode.DP_SUCCESS)
                 {
                     if (captureResult.ResultCode != Constants.ResultCode.DP_SUCCESS)
                     {
-                        //reset = true;
-                        throw new Exception(captureResult.ResultCode.ToString());
+                        //CancelarEnrrol();
+                        //Task.Run(() => CancelarEnrrol());
+                        throw new Exception(UT.HAS_ERROS("LE00002") + captureResult.ResultCode.ToString());
+
+                    }
+                    else
+                    {
+                        //lbl_estado.Text = "Lector conectado";
                     }
 
                     // Send message if quality shows fake finger
@@ -201,6 +232,8 @@ namespace DDigital
 
         private void IniciarNuevaLectura(bool isCheck, MANO dataMano)
         {
+            btn_registrar.Enabled = false;
+            txt_observacion.Enabled = false;
             CancelCaptureAndCloseReader(this.OnCaptured);
             //cancel_enrol = false;
             if (isCheck)
@@ -209,20 +242,32 @@ namespace DDigital
                 if (activa_cancel)
                 {
                     btn_cancel_enrol.Visible = true;
+                    this.StartCaptureAsync(this.OnCaptured);
+                    label1.Text = "Escaneado " + count + " de 4 muestras";
                 }
-                this.StartCaptureAsync(this.OnCaptured);
-                label1.Text = "Escaneado " + count + " de 4 muestras";
+              
             }
             else
             {
                 CancelCaptureAndCloseReader(this.OnCaptured);
             }
            
-          
        
         }
-
-
+            
+        public void EstadoLector()
+        {
+            UT = new UTILIDADES();
+            Reader temp = ReaderCollection.GetReaders()[0];
+            if (temp == null)
+            {
+                lbl_estado.Text = "Lector Desconectado";
+            }
+            else
+            {
+                lbl_estado.Text = "Lector conectado";
+            }            
+        }
       
         public void OnCaptured(CaptureResult captureResult) 
         {
@@ -231,7 +276,10 @@ namespace DDigital
             {
                 this.Invoke(new Action(() =>
                 {
-                    OnCaptured(captureResult);
+                
+                        OnCaptured(captureResult);
+                    
+                    
                 }));
                 return;
             }
@@ -242,13 +290,14 @@ namespace DDigital
                 // Check capture quality and throw an error if bad.
                 if (!this.CheckCaptureResult(captureResult)) return;
 
+
                 count++;
                 label1.Text = "Escaneado " + count + " de 4 muestras";
                 DataResult<Fmd> resultConversion = FeatureExtraction.CreateFmdFromFid(captureResult.Data, Constants.Formats.Fmd.ANSI);
             
         
 
-                firstFinger = resultConversion.Data;
+                //firstFinger = resultConversion.Data;
 
                 foreach (Fid.Fiv fiv in captureResult.Data.Views)
                 {          
@@ -266,8 +315,13 @@ namespace DDigital
                 bool existe =  VerificarExistenciaHuella(resultConversion.Data);
                 if (existe)
                 {
-                    MessageBox.Show("La huella que intenta registrar ya existe.", "Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //btn_cancel_enrol.PerformClick();
+                    MessageBox.Show(UT.HAS_ERROS("HD00001"), "Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Task.Run(() => _reader.Dispose());
+                    //Task.Run(() => _reader.CancelCapture());
+                    Task.Run(() => CancelarEnrrol());
+                    //return;
+
+
                 }
 
                 preenrollmentFmds.Add(resultConversion.Data);
@@ -287,8 +341,10 @@ namespace DDigital
                         label1.Text = "Escaneado " + count + " de 4 muestras";
                         btn_cancel_enrol.Visible = false;
 
-                        _HUELLA = ObtenerHuella(resultEnrollment.Data, ultima_imagen_huella);
-
+                        fmd_Registro = resultEnrollment.Data;
+                        btn_registrar.Enabled = true;
+                        txt_observacion.Enabled = true;
+                   
                         return;
                     }
                     else if (resultEnrollment.ResultCode == Constants.ResultCode.DP_ENROLLMENT_INVALID_SET)
@@ -312,9 +368,14 @@ namespace DDigital
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: OnCapture: "+ex.Message.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+               // CancelCaptureAndCloseReader(this.OnCaptured);
+                Task.Run(() => _reader.Dispose());
+                Task.Run(() => _reader.CancelCapture());
+                //CancelarEnrrol();
+                MessageBox.Show(ex.Message.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
             }
+            //finally { Task.Run(() => CancelarEnrrol()); _HUELLA = null; }
         }
 
 
@@ -327,41 +388,55 @@ namespace DDigital
             byte[] jpg_bytes = UT.ConveritirBitmap_tojpeg(IMG);
 
             HUELLA nueva_huella = new HUELLA();
-            nueva_huella._HUE_CODIGO = "110003815";
-            nueva_huella._HUE_IDENTIDAD = "0101198400304";
-            nueva_huella._HUE_TIPO_PER = "prueba";
+
+            nueva_huella._USR_AGREGO = CRED_.usr_logged;
+            DATA_PERSONA DP = new DATA_PERSONA();
+            work_flow wf = new work_flow();
+            var objeto = wf.InformacionVerificacion(CRED_.identidad, 1);
+            DP = objeto.Persona;
+
+            nueva_huella._HUE_CODIGO = CRED_.codigo;
+            nueva_huella._HUE_IDENTIDAD = CRED_.identidad;
+            nueva_huella._HUE_TIPO_PER = DP.TIPO;
             nueva_huella._HUELLA = tobytes;
-            nueva_huella._HUE_COMPANIA = "1";
-            nueva_huella._HUE_OBSERVACION = "Observacion nomas";
+            nueva_huella._HUE_COMPANIA = CRED_.cia;
+            nueva_huella._HUE_OBSERVACION = txt_observacion.Text;
             nueva_huella._DEDO = mano_.QUE_MANO+mano_.QUE_DEDO ;
             nueva_huella._HUELLA_SAMPLE = jpg_bytes;
 
 
-            nueva_huella._USR_AGREGO = "elmago";
-
-            work_flow wf = new work_flow();
-            wf.InformacionVerificacion("0101198400304", 2);
+        
             
-
-
             return nueva_huella;
         }
 
 
         private const int PROBABILITY_ONE = 0x7fffffff;
-        private Fmd firstFinger;
+
        // int count = 0;
         DataResult<Fmd> resultEnrollment;
         //List<Fmd> preenrollmentFmds;
         
-        private bool VerificarExistenciaHuella(Fmd fmd1) 
+        public bool VerificarExistenciaHuella(Fmd fmd1) 
         {
+           
             work_flow wf = new work_flow();
-           return wf.verificacion_huella(fmd1 );
+           return wf.verificacion_huella(fmd1, out IDENTIDAD_FROM_OUT);
         
         }
         private void CancelarEnrrol()
         {
+
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    CancelarEnrrol();
+                }));
+                return;
+            }
+            btn_registrar.Enabled = false;
+            txt_observacion.Enabled = false;
             btn_cancel_enrol.Visible = false;
             pic_huella.Image = null;
             // _reader.CancelCapture();
@@ -392,13 +467,41 @@ namespace DDigital
 
         private void Main_Menu_Load(object sender, EventArgs e)
         {
-            //lector = OpenReader();
-     
+            timer1.Start();
+ 
+            UT = new UTILIDADES();
+            CRED_ =  UT.LEER_CREDENCIALES();
+
+            //lbl_estado.Text = "";
             pic_huella.Image=null;
             preenrollmentFmds = new List<Fmd>();
             count = 0;
             label1.Text = "Escaneado "+count+" de 4 muestras";
-         
+            if (CRED_ != null)
+            {
+                switch (CRED_.fromAction)
+                {
+                    case "1":
+                        Verificacion vr = new Verificacion();
+                        vr._sender = this;
+                        vr.ShowDialog();
+                        vr.Dispose();
+                        vr = null;
+                        break;
+                    case "":
+                    default:
+                        break;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("ERROR IO0002: "+UT.HAS_ERROS("IO0002"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Application.Exit();
+                return;
+            }
+
+
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -493,15 +596,18 @@ namespace DDigital
 
         private void btn_registrar_Click(object sender, EventArgs e)
         {
+            _HUELLA = ObtenerHuella(fmd_Registro, ultima_imagen_huella);
             work_flow wf = new work_flow();
-
+            UT = new UTILIDADES();
             if (wf.registro_huella(_HUELLA))
             {
+                txt_observacion.Clear();
                 MessageBox.Show("Huella guardada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Task.Run(() => CancelarEnrrol());
             }
             else
             {
-                MessageBox.Show("No se pudo guardar la huella", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("HD00002 No filas afectadas: "+UT.HAS_ERROS("HD00002"), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -514,7 +620,27 @@ namespace DDigital
         private void button1_Click(object sender, EventArgs e)
         {
             Verificacion vr = new Verificacion();
+            vr._sender = this;
             vr.ShowDialog();
+            vr.Dispose();
+            vr = null;
+        }
+
+
+      
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            EstadoLector();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); 
+        }
+
+        private void lbl_estado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

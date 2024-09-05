@@ -56,17 +56,19 @@ namespace DDigital.Interfaz
            
 
         }
-        public bool verificacion_huella(Fmd fmd1)
+        public bool verificacion_huella(Fmd fmd1, out string identidad)
         {
             bool verifica = false;
             ODBC_CONN bd = new ODBC_CONN();
             sql = new QUERIES();
+            string IDENTIDAD_="";
             DataTable resultado = bd.EjecutarConsultaSelect(sql.select_toda_huella); //trae todas las huellas
             using (DataTableReader reader = resultado.CreateDataReader())
             {
                 while (reader.Read())
                 {
                     MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA"]);
+                   
                     string serial_huella = Encoding.UTF8.GetString(MEMORIA.ToArray());
                     Fmd fmd2 = Fmd.DeserializeXml(serial_huella); //grupo de fingers                     
                     CompareResult comparativa = Comparison.Compare(fmd1, 0, fmd2, 0);
@@ -76,11 +78,13 @@ namespace DDigital.Interfaz
                     }
                     if (Convert.ToDouble(comparativa.Score.ToString()) == 0)
                     {
+                        IDENTIDAD_ = reader["HUE_IDENTIDAD"].ToString();
                         verifica = true;
                         break;
                     }
                 }
             }
+            identidad = IDENTIDAD_;
             return verifica;
         }
 
@@ -104,29 +108,48 @@ namespace DDigital.Interfaz
                 {
                     while (reader.Read())
                     {
-                        string nombre = reader["NOMBRE"].ToString();
-                        string identidad = reader["IDENTIDAD"].ToString();
-                        string dedo = reader["DEDO"].ToString();
-                        string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
-                        string FECHA = reader["FECHA_CREACION"].ToString();
-                        MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
-                        string hue_id = reader["HUE_ID"].ToString();
-                        string CODIGO = reader["CODIGO"].ToString();
-                        string tipo_per = reader["HUE_TIPO_PER"].ToString();
-                        string usr = reader["USR_AGREGO"].ToString();
+                        if (tipo == 1) //SOLO DATA PERSONA
+                        {
+                            string nombre = reader["NOMBRE"].ToString();
+                            string identidad = reader["IDENTIDAD"].ToString();
+                            string CODIGO = reader["CODIGO"].ToString();
+                            string tipo_per = reader["TIPO"].ToString();
+                            //data general persona
+                            dp.NOMBRE = nombre;
+                            dp.TIPO = tipo_per;
+                            dp.CODIGO = CODIGO;
+                            dp.IDENTIDAD = identidad;
+                        }
+                        else
+                        {
 
-                        //data general persona
-                        dp.NOMBRE = nombre;
-                        dp.TIPO = tipo_per;
-                        dp.CODIGO = CODIGO;
-                        dp.IDENTIDAD = identidad;
-                        //data de su huella
-                        dh._DEDO = UT.identificaDedo(dedo);
-                        dh._HUE_OBSERVACION = OBSERVACION;
-                        dh._FECHA_CREACION = DateTime.Parse(FECHA);
-                        dh._HUE_ID = hue_id;
-                        dh._USR_AGREGO = usr;
-                        dh._HUELLA_SAMPLE = MEMORIA.ToArray();
+                            string nombre = reader["NOMBRE"].ToString();
+                            string identidad = reader["IDENTIDAD"].ToString();
+                            string CODIGO = reader["CODIGO"].ToString();
+                            string tipo_per = reader["TIPO"].ToString();
+
+                            string dedo = reader["DEDO"].ToString();
+                            string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
+                            string FECHA = reader["FECHA_CREACION"].ToString();
+                            MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
+                            string hue_id = reader["HUE_ID"].ToString();
+
+
+                            string usr = reader["USR_AGREGO"].ToString();
+
+                            //data general persona
+                            dp.NOMBRE = nombre;
+                            dp.TIPO = tipo_per;
+                            dp.CODIGO = CODIGO;
+                            dp.IDENTIDAD = identidad;
+                            //data de su huella
+                            dh._DEDO = UT.identificaDedo(dedo);
+                            dh._HUE_OBSERVACION = OBSERVACION;
+                            dh._FECHA_CREACION = DateTime.Parse(FECHA);
+                            dh._HUE_ID = hue_id;
+                            dh._USR_AGREGO = usr;
+                            dh._HUELLA_SAMPLE = MEMORIA.ToArray();
+                        }
 
                     }
                 }
