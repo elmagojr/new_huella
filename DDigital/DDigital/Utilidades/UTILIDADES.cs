@@ -192,12 +192,15 @@ namespace DDigital.Utilidades
                     return "LE00001 Letor de huellas desconectado ";
                 case "LE00002":
                     return "LE00002 Se ha desconectado el lector o no se detecta ";
+                case "VE00001":
+                    return "VE00001 Error en la captura ";
                 default:
                     return "Unknow error ";
                  
             }
         }
 
+        
 
     }
 

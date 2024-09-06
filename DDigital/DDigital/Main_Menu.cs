@@ -23,7 +23,7 @@ namespace DDigital
 {
     public partial class Main_Menu : Form
     {
-        CREDENCIALES CRED_;
+        public CREDENCIALES CRED_;
         Bitmap ultima_imagen_huella;
         public Reader _reader;
         private Fmd fmd_Registro;
@@ -32,7 +32,7 @@ namespace DDigital
         bool cancel_enrol = false;
         MANO mano_;
         UTILIDADES UT;
-        HUELLA _HUELLA;
+        public HUELLA _HUELLA;
         QUERIES sql;
         public string IDENTIDAD_FROM_OUT = "";
 
@@ -72,7 +72,63 @@ namespace DDigital
            
         }
 
-      
+
+        private void DeshabilitarRadios(string IDENTIDAD)
+        {
+
+            ODBC_CONN bd = new ODBC_CONN();
+            sql = new QUERIES();
+
+
+            Dictionary<string, object> parametros = new Dictionary<string, object> {
+                    {"@IDENTIDAD",IDENTIDAD }
+                };
+            //string IDENTIDAD_ = "";
+            DataTable resultado = bd.EjecutarConsultaSelect(sql.DEDOS_REGISTRADOS, parametros); //trae todas las huellas
+            using (DataTableReader reader = resultado.CreateDataReader())
+            {
+                while (reader.Read())
+                {
+                    string DEDO = reader["DEDO"].ToString();
+                    switch (DEDO)
+                    {
+                        case "DI1":
+                            radio_I1.Enabled=false;
+                            break;
+                        case "DI2":
+                            radio_I2.Enabled = false;
+                            break;
+                        case "DI3":
+                            radio_I3.Enabled = false;
+                            break;
+                        case "DI4":
+                            radio_I4.Enabled = false;
+                            break;
+                        case "DI5":
+                            radio_I5.Enabled = false;
+                            break;
+                        case "DD1":
+                            radio_D1.Enabled = false;
+                            break;
+                        case "DD2":
+                            radio_D2.Enabled = false;
+                            break;
+                        case "DD3":
+                            radio_D3.Enabled = false;
+                            break;
+                        case "DD4":
+                            radio_D4.Enabled = false;
+                            break;
+                        case "DD5":
+                            radio_D5.Enabled = false;
+                            break;
+                       
+                    }
+                }
+            }
+
+        }
+
 
         public void GetStatus()
         {
@@ -210,7 +266,27 @@ namespace DDigital
                     {
                         //CancelarEnrrol();
                         //Task.Run(() => CancelarEnrrol());
-                        throw new Exception(UT.HAS_ERROS("LE00002") + captureResult.ResultCode.ToString());
+                  
+                        while (!EstadoLector())
+                        {
+                            _reader.Dispose();
+                            _reader.CancelCapture();
+                            //Task.Run(() => _reader.Dispose());
+                            //Task.Run(() => _reader.CancelCapture());
+                            //MessageBox.Show("Error en CheckCaptureResult: Descocncetado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        bool activa_cancel = this.OpenReader();
+                        if (activa_cancel)
+                        {
+                         
+                            this.StartCaptureAsync(this.OnCaptured);                      
+                        }
+                        //this.Invoke(new Action(() =>
+                        //{
+                        //    this.Close();
+                        //}));
+                        // throw new Exception(UT.HAS_ERROS("LE00002") + captureResult.ResultCode.ToString());
 
                     }
                     else
@@ -255,17 +331,27 @@ namespace DDigital
        
         }
             
-        public void EstadoLector()
+        public bool EstadoLector()
         {
             UT = new UTILIDADES();
             Reader temp = ReaderCollection.GetReaders()[0];
             if (temp == null)
             {
-                lbl_estado.Text = "Lector Desconectado";
+                this.Invoke(new Action(() =>
+                {
+                    lbl_estado.Text = "Lector Desconectado";
+                }));
+            
+                return false;
             }
             else
             {
-                lbl_estado.Text = "Lector conectado";
+                this.Invoke(new Action(() =>
+                {
+                    lbl_estado.Text = "Lector conectado";
+                }));
+           
+                return true;
             }            
         }
       
@@ -392,8 +478,8 @@ namespace DDigital
             nueva_huella._USR_AGREGO = CRED_.usr_logged;
             DATA_PERSONA DP = new DATA_PERSONA();
             work_flow wf = new work_flow();
-            var objeto = wf.InformacionVerificacion(CRED_.identidad, 1);
-            DP = objeto.Persona;
+        
+            DP = wf.InformacionVerificacion(CRED_.identidad, 1);
 
             nueva_huella._HUE_CODIGO = CRED_.codigo;
             nueva_huella._HUE_IDENTIDAD = CRED_.identidad;
@@ -420,8 +506,8 @@ namespace DDigital
         public bool VerificarExistenciaHuella(Fmd fmd1) 
         {
            
-            work_flow wf = new work_flow();
-           return wf.verificacion_huella(fmd1, out IDENTIDAD_FROM_OUT);
+           work_flow wf = new work_flow();
+           return wf.verificacion_huella(fmd1, out _HUELLA);
         
         }
         private void CancelarEnrrol()
@@ -471,7 +557,8 @@ namespace DDigital
  
             UT = new UTILIDADES();
             CRED_ =  UT.LEER_CREDENCIALES();
-
+        
+          
             //lbl_estado.Text = "";
             pic_huella.Image=null;
             preenrollmentFmds = new List<Fmd>();
@@ -479,6 +566,7 @@ namespace DDigital
             label1.Text = "Escaneado "+count+" de 4 muestras";
             if (CRED_ != null)
             {
+                DeshabilitarRadios(CRED_.identidad);
                 switch (CRED_.fromAction)
                 {
                     case "1":

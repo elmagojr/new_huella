@@ -19,7 +19,7 @@ namespace DDigital.Utilidades
     {
         public object _HUE_ID { get; set; }
         public object _HUE_CODIGO { get; set; }
-        public object _HUE_IDENTIDAD { get; set; }
+        public string _HUE_IDENTIDAD { get; set; }
         public object _HUE_TIPO_PER { get; set; }
         public byte[] _HUELLA { get; set; }
         public DateTime _FECHA_CREACION { get; set; }

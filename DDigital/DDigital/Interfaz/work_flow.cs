@@ -56,12 +56,13 @@ namespace DDigital.Interfaz
            
 
         }
-        public bool verificacion_huella(Fmd fmd1, out string identidad)
+        public bool verificacion_huella(Fmd fmd1, out HUELLA huella_)
         {
+            UT = new UTILIDADES();
             bool verifica = false;
             ODBC_CONN bd = new ODBC_CONN();
             sql = new QUERIES();
-            string IDENTIDAD_="";
+            HUELLA dh = new HUELLA();
             DataTable resultado = bd.EjecutarConsultaSelect(sql.select_toda_huella); //trae todas las huellas
             using (DataTableReader reader = resultado.CreateDataReader())
             {
@@ -78,17 +79,44 @@ namespace DDigital.Interfaz
                     }
                     if (Convert.ToDouble(comparativa.Score.ToString()) == 0)
                     {
-                        IDENTIDAD_ = reader["HUE_IDENTIDAD"].ToString();
+
+                     
+                        string identidad = reader["HUE_IDENTIDAD"].ToString();
+                        string CODIGO = reader["HUE_CODIGO"].ToString();
+                        string tipo_per = reader["HUE_TIPO_PER"].ToString();
+
+                        string dedo = reader["DEDO"].ToString();
+                        string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
+                        string FECHA = reader["FECHA_CREACION"].ToString();
+                        MemoryStream M_MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
+                        string hue_id = reader["HUE_ID"].ToString();
+
+
+                        string usr = reader["USR_AGREGO"].ToString();
+
+                        //data general persona
+                       
+                        //data de su huella
+                        dh._HUE_TIPO_PER = tipo_per;
+                        dh._HUE_CODIGO = CODIGO;
+                        dh._HUE_IDENTIDAD = identidad;
+                        dh._DEDO = UT.identificaDedo(dedo);
+                        dh._HUE_OBSERVACION = OBSERVACION;
+                        dh._FECHA_CREACION = DateTime.Parse(FECHA);
+                        dh._HUE_ID = hue_id;
+                        dh._USR_AGREGO = usr;
+                        dh._HUELLA_SAMPLE = M_MEMORIA.ToArray();               
+              
                         verifica = true;
                         break;
                     }
                 }
             }
-            identidad = IDENTIDAD_;
+            huella_ = dh;
             return verifica;
         }
 
-        public (DATA_PERSONA Persona, HUELLA hue_data) InformacionVerificacion(string IDENTIDAD, int tipo)
+        public DATA_PERSONA InformacionVerificacion(string IDENTIDAD, int tipo)
         {
 
             DATA_PERSONA dp = new DATA_PERSONA();
@@ -120,42 +148,42 @@ namespace DDigital.Interfaz
                             dp.CODIGO = CODIGO;
                             dp.IDENTIDAD = identidad;
                         }
-                        else
-                        {
+                        //else
+                        //{
 
-                            string nombre = reader["NOMBRE"].ToString();
-                            string identidad = reader["IDENTIDAD"].ToString();
-                            string CODIGO = reader["CODIGO"].ToString();
-                            string tipo_per = reader["TIPO"].ToString();
+                        //    string nombre = reader["NOMBRE"].ToString();
+                        //    string identidad = reader["IDENTIDAD"].ToString();
+                        //    string CODIGO = reader["CODIGO"].ToString();
+                        //    string tipo_per = reader["TIPO"].ToString();
 
-                            string dedo = reader["DEDO"].ToString();
-                            string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
-                            string FECHA = reader["FECHA_CREACION"].ToString();
-                            MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
-                            string hue_id = reader["HUE_ID"].ToString();
+                        //    string dedo = reader["DEDO"].ToString();
+                        //    string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
+                        //    string FECHA = reader["FECHA_CREACION"].ToString();
+                        //    MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
+                        //    string hue_id = reader["HUE_ID"].ToString();
 
 
-                            string usr = reader["USR_AGREGO"].ToString();
+                        //    string usr = reader["USR_AGREGO"].ToString();
 
-                            //data general persona
-                            dp.NOMBRE = nombre;
-                            dp.TIPO = tipo_per;
-                            dp.CODIGO = CODIGO;
-                            dp.IDENTIDAD = identidad;
-                            //data de su huella
-                            dh._DEDO = UT.identificaDedo(dedo);
-                            dh._HUE_OBSERVACION = OBSERVACION;
-                            dh._FECHA_CREACION = DateTime.Parse(FECHA);
-                            dh._HUE_ID = hue_id;
-                            dh._USR_AGREGO = usr;
-                            dh._HUELLA_SAMPLE = MEMORIA.ToArray();
-                        }
+                        //    //data general persona
+                        //    dp.NOMBRE = nombre;
+                        //    dp.TIPO = tipo_per;
+                        //    dp.CODIGO = CODIGO;
+                        //    dp.IDENTIDAD = identidad;
+                        //    //data de su huella
+                        //    dh._DEDO = UT.identificaDedo(dedo);
+                        //    dh._HUE_OBSERVACION = OBSERVACION;
+                        //    dh._FECHA_CREACION = DateTime.Parse(FECHA);
+                        //    dh._HUE_ID = hue_id;
+                        //    dh._USR_AGREGO = usr;
+                        //    dh._HUELLA_SAMPLE = MEMORIA.ToArray();
+                        //}
 
                     }
                 }
             }
 
-            return (dp, dh);
+            return dp;
         }
     }
 
