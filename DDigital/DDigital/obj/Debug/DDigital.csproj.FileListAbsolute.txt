@@ -28,3 +28,23 @@ D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUru
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.xml
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Verificacion.resources
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe.config
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.pdb
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.dll
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.dll
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.dll
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.dll
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.xml
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.xml
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.xml
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.xml
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.AssemblyReference.cache
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Main_Menu.resources
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Properties.Resources.resources
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Verificacion.resources
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.GenerateResource.cache
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.CoreCompileInputs.cache
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
+C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb

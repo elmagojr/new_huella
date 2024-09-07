@@ -57,7 +57,9 @@ namespace DDigital
                             {
                                 while (!EstadoLector())
                                 {
-                                    Task.Run(() => lbl_principal.ForeColor = Color.Orange);
+                                    lbl_principal.ForeColor = Color.Orange;
+                                  //  this.Invoke(new Action(() => lbl_principal.Text = "LECTOR DE HUELLAS DESCONECTADO"));
+                                    //Task.Run(() => lbl_principal.ForeColor = Color.Orange);
 
                                     //this.Invoke(new Action(() => lbl_principal.Text = "LECTOR DE HUELLAS DESCONECTADO"));
                                     //
@@ -195,10 +197,19 @@ namespace DDigital
 
                 }
                 else {
+                    try
+                    {
+                        resetVentana();
+                        this.Invoke(new Action(() => lbl_principal.Text = "No encontrado. Favor vuelva a escanear el dedo"));
+                        Task.Run(() => lbl_principal.ForeColor = Color.Red);
 
-                    resetVentana();
-                    this.Invoke(new Action(() => lbl_principal.Text = "No encontrado. Favor vuelva a escanear el dedo"));
-                    Task.Run(() => lbl_principal.ForeColor = Color.Red);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("al reset " + ex.Message);
+                    }
+                  
                     // lbl_principal.Text = "No encontrado. Favor vuelva a escanear el dedo";
                     //  lbl_principal.ForeColor = Color.Red;
 
@@ -218,14 +229,23 @@ namespace DDigital
         }
         private void resetVentana()
         {
-            this.Invoke(new Action(() => txt_codigo.Clear()));
-            this.Invoke(new Action(() => txt_dedo.Clear()));
-            this.Invoke(new Action(() => txt_identidad.Clear()));
-            this.Invoke(new Action(() => txt_nombre.Clear()));
-            this.Invoke(new Action(() => txt_observacion.Clear()));
-            this.Invoke(new Action(() => txt_tipo.Clear()));
-            this.Invoke(new Action(() => lbl_principal.Text = "Debe poner el dedo en el lector de huellas"));
-            this.Invoke(new Action(() => lbl_principal.ForeColor = Color.Black));
+            try
+            {
+                this.Invoke(new Action(() => txt_codigo.Clear()));
+                this.Invoke(new Action(() => txt_dedo.Clear()));
+                this.Invoke(new Action(() => txt_identidad.Clear()));
+                this.Invoke(new Action(() => txt_nombre.Clear()));
+                this.Invoke(new Action(() => txt_observacion.Clear()));
+                this.Invoke(new Action(() => txt_tipo.Clear()));
+                this.Invoke(new Action(() => lbl_principal.Text = "Debe poner el dedo en el lector de huellas"));
+                this.Invoke(new Action(() => lbl_principal.ForeColor = Color.Black));
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("al reset " + ex.Message);
+            }
+      
 
             //txt_codigo.Clear();
             //txt_dedo.Clear();

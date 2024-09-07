@@ -23,6 +23,7 @@ namespace DDigital
 {
     public partial class Main_Menu : Form
     {
+        work_flow wf; 
         public CREDENCIALES CRED_;
         Bitmap ultima_imagen_huella;
         public Reader _reader;
@@ -34,6 +35,7 @@ namespace DDigital
         UTILIDADES UT;
         public HUELLA _HUELLA;
         QUERIES sql;
+        public DATA_PERSONA d_persona;
         public string IDENTIDAD_FROM_OUT = "";
 
         
@@ -73,12 +75,12 @@ namespace DDigital
         }
 
 
-        private void DeshabilitarRadios(string IDENTIDAD)
+        private int DeshabilitarRadios(string IDENTIDAD)
         {
 
             ODBC_CONN bd = new ODBC_CONN();
             sql = new QUERIES();
-
+            int conteo = 0;
 
             Dictionary<string, object> parametros = new Dictionary<string, object> {
                     {"@IDENTIDAD",IDENTIDAD }
@@ -87,6 +89,7 @@ namespace DDigital
             DataTable resultado = bd.EjecutarConsultaSelect(sql.DEDOS_REGISTRADOS, parametros); //trae todas las huellas
             using (DataTableReader reader = resultado.CreateDataReader())
             {
+              
                 while (reader.Read())
                 {
                     string DEDO = reader["DEDO"].ToString();
@@ -94,38 +97,59 @@ namespace DDigital
                     {
                         case "DI1":
                             radio_I1.Enabled=false;
+                            PI1.Visible=true;
+                            conteo++;
                             break;
                         case "DI2":
                             radio_I2.Enabled = false;
+                            PI2.Visible = true;
+                            conteo++;
                             break;
                         case "DI3":
                             radio_I3.Enabled = false;
+                            PI3.Visible = true;
+                            conteo++;
                             break;
                         case "DI4":
                             radio_I4.Enabled = false;
+                            PI4.Visible = true;
+                            conteo++;
                             break;
                         case "DI5":
                             radio_I5.Enabled = false;
+                            PI5.Visible = true;
+                            conteo++;
                             break;
                         case "DD1":
                             radio_D1.Enabled = false;
+                            PD1.Visible = true;
+                            conteo++;
                             break;
                         case "DD2":
+                            PD2.Visible = true;
                             radio_D2.Enabled = false;
+                            conteo++;
                             break;
                         case "DD3":
+                            PD3.Visible = true;
                             radio_D3.Enabled = false;
+                            conteo++;
                             break;
                         case "DD4":
+                            PD4.Visible = true;
                             radio_D4.Enabled = false;
+                            conteo++;
                             break;
                         case "DD5":
+                            PD5.Visible = true;
                             radio_D5.Enabled = false;
+                            conteo++;
                             break;
                        
                     }
                 }
             }
+            return conteo;
 
         }
 
@@ -554,11 +578,19 @@ namespace DDigital
         private void Main_Menu_Load(object sender, EventArgs e)
         {
             timer1.Start();
+            lbl_mano.Text = tabControl1.SelectedTab.Text;
  
             UT = new UTILIDADES();
+            wf = new work_flow();
+            d_persona = new DATA_PERSONA();
             CRED_ =  UT.LEER_CREDENCIALES();
-        
-          
+            d_persona =  wf.InformacionVerificacion(CRED_.identidad, 1);
+
+            txt_nombre.Text = d_persona.NOMBRE;
+            txt_identidad.Text = d_persona.IDENTIDAD;
+            txt_tipo_per.Text = d_persona.TIPO;
+            txt_codigo.Text = d_persona.CODIGO;
+
             //lbl_estado.Text = "";
             pic_huella.Image=null;
             preenrollmentFmds = new List<Fmd>();
@@ -566,7 +598,8 @@ namespace DDigital
             label1.Text = "Escaneado "+count+" de 4 muestras";
             if (CRED_ != null)
             {
-                DeshabilitarRadios(CRED_.identidad);
+               int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+                lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
                 switch (CRED_.fromAction)
                 {
                     case "1":
@@ -698,10 +731,21 @@ namespace DDigital
                 MessageBox.Show("HD00002 No filas afectadas: "+UT.HAS_ERROS("HD00002"), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+            lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
+
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedTab.Name== "tabPage1")
+            {
+                lbl_mano.Text = "Mano Izquierda";
+            }
+            else
+            {
+                lbl_mano.Text = "Mano Derecha";
+            }
             CancelarEnrrol();
         }
 
