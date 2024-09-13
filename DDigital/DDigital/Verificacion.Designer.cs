@@ -72,10 +72,11 @@
             this.btn_lista_hue.TabIndex = 15;
             this.btn_lista_hue.Text = "Ver Todas las Huellas";
             this.btn_lista_hue.UseVisualStyleBackColor = true;
+            this.btn_lista_hue.Click += new System.EventHandler(this.btn_lista_hue_Click);
             // 
             // btn_cancelar
             // 
-            this.btn_cancelar.Location = new System.Drawing.Point(487, 332);
+            this.btn_cancelar.Location = new System.Drawing.Point(469, 332);
             this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(100, 28);
@@ -145,7 +146,7 @@
             // btn_confirmar
             // 
             this.btn_confirmar.Enabled = false;
-            this.btn_confirmar.Location = new System.Drawing.Point(595, 332);
+            this.btn_confirmar.Location = new System.Drawing.Point(577, 332);
             this.btn_confirmar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_confirmar.Name = "btn_confirmar";
             this.btn_confirmar.Size = new System.Drawing.Size(100, 28);

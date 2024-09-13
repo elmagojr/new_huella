@@ -77,27 +77,115 @@ namespace DDigital
 
         private int DeshabilitarRadios(string IDENTIDAD)
         {
+            List<Control> controlsToHide = new List<Control> { p_1, p_2, p_3, p_4, p_5, p_6, p_7, p_8, p_9, p_10 };
 
-            ODBC_CONN bd = new ODBC_CONN();
-            sql = new QUERIES();
+            foreach (Control ctrl in controlsToHide)
+            {
+                ctrl.Visible = true;
+            }
+
+            List<Control> radios_enables = new List<Control> { radio_I1, radio_I2, radio_I3, radio_I4, radio_I5, radio_D1, radio_D2, radio_D3, radio_D4, radio_D5 };
+
+            foreach (Control ctrl in radios_enables)
+            {
+                ctrl.Enabled = false;
+            }
+
+            List<Control> checks = new List<Control> { PI1, PI2, PI3, PI4, PI5,PD1,PD2,PD3,PD4,PD5 };
+
+            foreach (Control ctrl in checks)
+            {
+                ctrl.Visible = false;
+            }
+
+            work_flow wf = new work_flow();
             int conteo = 0;
+            List<string> list = new List<string>();
+            //para desactivar los que no estan permitidos
+            list = wf.Deshabilitar_Checks();
+            
 
-            Dictionary<string, object> parametros = new Dictionary<string, object> {
-                    {"@IDENTIDAD",IDENTIDAD }
-                };
-            //string IDENTIDAD_ = "";
-            DataTable resultado = bd.EjecutarConsultaSelect(sql.DEDOS_REGISTRADOS, parametros); //trae todas las huellas
+            string dedo_select = list[0];
+            if (dedo_select =="I" | dedo_select == "DI")
+            {
+                
+                if (list.Contains("DI1"))
+                {
+                    p_10.Visible = false;
+                    radio_I1.Enabled = true;
+                }
+                if (list.Contains("DI2"))
+                {
+                    p_9.Visible = false;
+                    radio_I2.Enabled = true;
+                }
+                if (list.Contains("DI3"))
+                {
+                    p_8.Visible = false;
+                    radio_I3.Enabled = true;
+                }
+                if (list.Contains("DI4"))
+                {
+                    p_7.Visible = false;
+                    radio_I4.Enabled = true;
+                }
+                if (list.Contains("DI5"))
+                {
+                    p_6.Visible = false;
+                    radio_I5.Enabled = true;
+                }
+            } 
+
+
+
+
+
+
+            if (dedo_select == "D" | dedo_select == "DI")
+            {
+                //tabControl1.SelectedTab = tabPage2;
+                if (list.Contains("DD1"))
+                {
+                    p_1.Visible = false;      
+                    radio_D1.Enabled = true; 
+                }
+                if (list.Contains("DD2"))
+                {
+                    p_2.Visible = false;
+                    radio_D2.Enabled = true;
+                }
+                if (list.Contains("DD3"))
+                {
+                    p_3.Visible = false;
+                    radio_D3.Enabled = true;
+                }
+                if (list.Contains("DD4"))
+                {
+                    p_4.Visible = false;
+                    radio_D4.Enabled = true;
+                }
+                if (list.Contains("DD5"))
+                {
+                    p_5.Visible = false;
+                    radio_D5.Enabled = true;
+                }
+            }
+
+
+            tabControl1.SelectedTab = (dedo_select == "I") ? tabPage1 : tabPage2;
+
+            DataTable resultado = wf.Deshabilitar_Radios(IDENTIDAD); //trae todas las huellas
             using (DataTableReader reader = resultado.CreateDataReader())
             {
-              
+
                 while (reader.Read())
                 {
                     string DEDO = reader["DEDO"].ToString();
                     switch (DEDO)
                     {
                         case "DI1":
-                            radio_I1.Enabled=false;
-                            PI1.Visible=true;
+                            radio_I1.Enabled = false;
+                            PI1.Visible = true;
                             conteo++;
                             break;
                         case "DI2":
@@ -145,10 +233,12 @@ namespace DDigital
                             radio_D5.Enabled = false;
                             conteo++;
                             break;
-                       
                     }
                 }
             }
+            
+
+
             return conteo;
 
         }
@@ -247,7 +337,7 @@ namespace DDigital
                     //Task.Run(()=> _reader.Dispose())  ;
                     _reader.Dispose();
                      count = 0;
-
+                    _reader = null;
                     //if (reset)
                     //{
                     //    _reader = null;
@@ -344,6 +434,7 @@ namespace DDigital
                     btn_cancel_enrol.Visible = true;
                     this.StartCaptureAsync(this.OnCaptured);
                     label1.Text = "Escaneado " + count + " de 4 muestras";
+                    label1.ForeColor = Color.Black;
                 }
               
             }
@@ -385,10 +476,8 @@ namespace DDigital
             if (this.InvokeRequired)
             {
                 this.Invoke(new Action(() =>
-                {
-                
-                        OnCaptured(captureResult);
-                    
+                {                
+                        OnCaptured(captureResult);                   
                     
                 }));
                 return;
@@ -403,6 +492,7 @@ namespace DDigital
 
                 count++;
                 label1.Text = "Escaneado " + count + " de 4 muestras";
+                label1.ForeColor = Color.Black;
                 DataResult<Fmd> resultConversion = FeatureExtraction.CreateFmdFromFid(captureResult.Data, Constants.Formats.Fmd.ANSI);
             
         
@@ -445,16 +535,20 @@ namespace DDigital
                    
                     if (resultEnrollment.ResultCode == Constants.ResultCode.DP_SUCCESS)
                     {
-                        MessageBox.Show("Registro exitoso "+mano_.QUE_DEDO + mano_.QUE_MANO);         
-                        preenrollmentFmds.Clear();
-                        count = 0;
+                        //MessageBox.Show("Registro exitoso "+mano_.QUE_DEDO + mano_.QUE_MANO);         
+                        preenrollmentFmds.Clear();                       
                         label1.Text = "Escaneado " + count + " de 4 muestras";
-                        btn_cancel_enrol.Visible = false;
+                        label1.ForeColor = Color.DarkGreen;
+                        count = 0;
+                        
+
+                       // btn_cancel_enrol.Visible = false;
 
                         fmd_Registro = resultEnrollment.Data;
                         btn_registrar.Enabled = true;
                         txt_observacion.Enabled = true;
-                   
+                       
+                        Task.Run(() => CancelCaptureAndCloseReader(this.OnCaptured));
                         return;
                     }
                     else if (resultEnrollment.ResultCode == Constants.ResultCode.DP_ENROLLMENT_INVALID_SET)
@@ -464,6 +558,7 @@ namespace DDigital
                         preenrollmentFmds.Clear();
                         count = 0;
                         label1.Text = "Escaneado " + count + " de 4 muestras";
+                        label1.ForeColor = Color.Black;
                         return;
                     }
                     else if (resultEnrollment.ResultCode == Constants.ResultCode.DP_ENROLLMENT_NOT_READY)
@@ -514,9 +609,6 @@ namespace DDigital
             nueva_huella._DEDO = mano_.QUE_MANO+mano_.QUE_DEDO ;
             nueva_huella._HUELLA_SAMPLE = jpg_bytes;
 
-
-        
-            
             return nueva_huella;
         }
 
@@ -554,6 +646,7 @@ namespace DDigital
             CancelCaptureAndCloseReader(this.OnCaptured);
             count = 0;
             label1.Text = "Escaneado " + count + " de 4 muestras";
+            label1.ForeColor = Color.Black;
             foreach (TabPage tabPage in tabControl1.TabPages)
             {
                 // Recorrer cada control dentro de la TabPage
@@ -584,43 +677,71 @@ namespace DDigital
             wf = new work_flow();
             d_persona = new DATA_PERSONA();
             CRED_ =  UT.LEER_CREDENCIALES();
-            d_persona =  wf.InformacionVerificacion(CRED_.identidad, 1);
-
-            txt_nombre.Text = d_persona.NOMBRE;
-            txt_identidad.Text = d_persona.IDENTIDAD;
-            txt_tipo_per.Text = d_persona.TIPO;
-            txt_codigo.Text = d_persona.CODIGO;
-
-            //lbl_estado.Text = "";
-            pic_huella.Image=null;
-            preenrollmentFmds = new List<Fmd>();
-            count = 0;
-            label1.Text = "Escaneado "+count+" de 4 muestras";
-            if (CRED_ != null)
+            try
             {
-               int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
-                lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
-                switch (CRED_.fromAction)
+                d_persona = wf.InformacionVerificacion(CRED_.identidad, 1);
+                txt_nombre.Text = d_persona.NOMBRE;
+                txt_identidad.Text = d_persona.IDENTIDAD;
+                txt_tipo_per.Text = d_persona.TIPO;
+                txt_codigo.Text = d_persona.CODIGO;
+
+                //lbl_estado.Text = "";
+                pic_huella.Image = null;
+                preenrollmentFmds = new List<Fmd>();
+                count = 0;
+                label1.Text = "Escaneado " + count + " de 4 muestras";
+                if (CRED_ != null)
                 {
-                    case "1":
-                        Verificacion vr = new Verificacion();
-                        vr._sender = this;
-                        vr.ShowDialog();
-                        vr.Dispose();
-                        vr = null;
-                        break;
-                    case "":
-                    default:
-                        break;
-                }
+                    int CONTEO_HUELLAS = 0;
+                   
+                        DeshabilitarRadios(CRED_.identidad);
+                  
+                    lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
+                    switch (CRED_.fromAction)
+                    {
+                        case "1":
+                            if (wf.Es_Mancomunada(CRED_) > 1 && CRED_.cta != "ver")
+                            {
+                                verifica_mancomuna vm = new verifica_mancomuna();
+                                vm._sender = this;
+                                vm.ShowDialog();
+                                vm.Dispose();
+                                vm = null;
+                            }
+                            else
+                            {
+                                Verificacion vr = new Verificacion();
+                                vr._sender = this;
+                                vr.ShowDialog();
+                                vr.Dispose();
+                                vr = null;
+                            }
 
+                            break;
+                        case "":
+                        default:
+                            break;
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("ERROR IO0002: " + UT.HAS_ERROS("IO0002"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Application.Exit();
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("ERROR IO0002: "+UT.HAS_ERROS("IO0002"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                MessageBox.Show( ex.Message);
                 Application.Exit();
                 return;
             }
+
+           
+
+         
 
 
         }
@@ -756,6 +877,8 @@ namespace DDigital
             vr.ShowDialog();
             vr.Dispose();
             vr = null;
+            //int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+            //lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
         }
 
 
@@ -772,6 +895,52 @@ namespace DDigital
 
         private void lbl_estado_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void seccionarManoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_reader!=null)
+            {
+                MessageBox.Show("Debe cancelar el enrolamiento que inicio", "ADVERTENCIA",MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                return; 
+            }
+            Select_mano select_Mano = new Select_mano();
+            select_Mano.ShowDialog();
+            select_Mano.Dispose();
+            select_Mano = null;
+            //int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+            //lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
+
+        }
+
+        private void Main_Menu_Activated(object sender, EventArgs e)
+        {
+            int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+
+            lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
+            //CancelarEnrrol();
+        }
+
+        private void listadoDeHuellasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool usardni = false;
+            DialogResult result = MessageBox.Show("¿Desea usar el DNI de la persona Actual?", "Usar DNI", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                usardni = true;
+            } else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            listado_huellas lh = new listado_huellas(usardni);
+            lh._sender = this;
+            lh.ShowDialog();
+            lh.Dispose();
+            lh = null;
+            //int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+            //lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
 
         }
     }

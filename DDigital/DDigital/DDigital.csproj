@@ -63,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaz\work_flow.cs" />
+    <Compile Include="listado_huellas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listado_huellas.Designer.cs">
+      <DependentUpon>listado_huellas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,16 +77,31 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Select_mano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Select_mano.Designer.cs">
+      <DependentUpon>Select_mano.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\clases.cs" />
     <Compile Include="Utilidades\ODBC_CONN.cs" />
     <Compile Include="Utilidades\QUERIES.cs" />
     <Compile Include="Utilidades\UTILIDADES.cs" />
+    <Compile Include="verifica_mancomuna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="verifica_mancomuna.Designer.cs">
+      <DependentUpon>verifica_mancomuna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Verificacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Verificacion.Designer.cs">
       <DependentUpon>Verificacion.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="listado_huellas.resx">
+      <DependentUpon>listado_huellas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu.resx">
       <DependentUpon>Main_Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +109,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Select_mano.resx">
+      <DependentUpon>Select_mano.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="verifica_mancomuna.resx">
+      <DependentUpon>verifica_mancomuna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Verificacion.resx">
       <DependentUpon>Verificacion.cs</DependentUpon>
@@ -124,6 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\denied.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bloquedo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

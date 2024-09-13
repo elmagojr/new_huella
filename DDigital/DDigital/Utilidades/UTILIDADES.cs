@@ -178,7 +178,8 @@ namespace DDigital.Utilidades
                     return "La huella que intenta registrar ya existe. ";
                 case "HD00002":
                     return "No se pudo guardar la huella ";
-
+                case "DB00000":
+                    return "DB00000 Sin conexion. Verifique la conexion del servidor de base de datos: ";
                 case "DB00001":
                     return "DB00001 Cosulta/Parametro: ";
                 case "DB00002":
@@ -194,13 +195,39 @@ namespace DDigital.Utilidades
                     return "LE00002 Se ha desconectado el lector o no se detecta ";
                 case "VE00001":
                     return "VE00001 Error en la captura ";
+                case "VE00002":
+                    return "VE00002 Error en la verificacion ";
                 default:
                     return "Unknow error ";
                  
             }
         }
 
-        
+        public bool ExportarTXT(DATA_INTERSEPTOR link)
+        {
+
+            string path = @"C:\SISC\Addons\DDigital\ENLACE.txt";
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(path, false))
+                {
+                    sw.WriteLine(link.FLAG);
+                    sw.WriteLine(link.HUE_IDENTIDAD);
+                    sw.WriteLine(link.HUE_CODIGO);
+                    sw.WriteLine(link.TIPO_PER);
+                    sw.WriteLine(link.USR_VERIFICO);
+                    sw.WriteLine(link.NOMBRE_VERIFICA);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(this.HAS_ERROS("VE00002") + ex.Message);
+                return false;
+            }
+        }
 
     }
 

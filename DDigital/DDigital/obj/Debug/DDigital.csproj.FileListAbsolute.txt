@@ -48,3 +48,6 @@ C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\D
 C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
 C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
 C:\Users\roken\Documents\NEW HUELLA\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Select_mano.resources
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.listado_huellas.resources
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Utilidades.verifica_mancomuna.resources

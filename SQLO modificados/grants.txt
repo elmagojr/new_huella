@@ -1,0 +1,1 @@
+GRANT  EXECUTE  on dba.sp_select_mano to g_adm_core

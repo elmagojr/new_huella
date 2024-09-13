@@ -1,12 +1,14 @@
 ﻿using DDigital.Interfaz;
 using DDigital.Utilidades;
 using DPUruNet;
+using ProyectoDIGITALPERSONA;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +23,10 @@ namespace DDigital
         int count = 0;
         Bitmap ultima_imagen_huella;
         UTILIDADES UT;
+        bool cancelar=false;
+
+        DATA_PERSONA persona;
+        HUELLA huella;
         public Verificacion()
         {
             InitializeComponent();
@@ -110,28 +116,11 @@ namespace DDigital
         public void OnCaptured(CaptureResult captureResult)
         {
 
-            //if (this.InvokeRequired)
-            //{
-            //    this.Invoke(new Action(() =>
-            //    {
-            //        OnCaptured(captureResult);
-            //    }));
-            //    return;
-            //}
 
             UTILIDADES UT = new UTILIDADES();
             try
             {
-                // Check capture quality and throw an error if bad.
-                //try
-                //{
-                //    if (!_sender.CheckCaptureResult(captureResult)) return;
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show("Error en CheckCaptureResult: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);            
-                //    return;
-                //}
+             
                 try
                 {
                     if (!this.CheckCaptureResult(captureResult)) return;
@@ -160,18 +149,13 @@ namespace DDigital
                 bool existe = _sender.VerificarExistenciaHuella(resultConversion.Data);
                 if (existe)
                 {
-                    DATA_PERSONA persona = new DATA_PERSONA();
-                    HUELLA huella = new HUELLA();
-                    work_flow wf = new work_flow();
+                     persona = new DATA_PERSONA();
+                     huella = new HUELLA();
+                     work_flow wf = new work_flow();
 
 
                     huella = _sender._HUELLA;
                     persona = wf.InformacionVerificacion(huella._HUE_IDENTIDAD, 1);
-
-                  
-
-
-
 
                     this.Invoke(new Action(() => txt_codigo.Text = persona.CODIGO));
                     this.Invoke(new Action(() => txt_dedo.Text = huella._DEDO));
@@ -181,25 +165,31 @@ namespace DDigital
                     this.Invoke(new Action(() => txt_tipo.Text = persona.TIPO));
                     this.Invoke(new Action(() => lbl_principal.Text = "Debe poner el dedo en el lector de huellas"));
                     this.Invoke(new Action(() => lbl_principal.ForeColor = Color.Black));
-                    //this.Invoke(new Action(() =>
-                    //{
-                    //    txt_codigo.Text = persona.CODIGO;
-                    //    txt_dedo.Text = huella._DEDO;
-                    //    txt_identidad.Text = persona.IDENTIDAD;
-                    //    txt_nombre.Text = persona.NOMBRE;
-                    //    txt_observacion.Text = huella._HUE_OBSERVACION;
-                    //    txt_tipo.Text = persona.TIPO;
-                    //    lbl_principal.Text = "Debe poner el dedo en el lector de huellas";
-                    //    lbl_principal.ForeColor = Color.Black;
-                    //}));
 
-               
+                    if (_CRED.cta!="ver")
+                    {
+                        VerificarFirma(huella);
+                    }
+                    else
+                    {
+                        this.Invoke((Action)(() =>
+                        {
+                            btn_confirmar.Enabled = true;
+                        }));
+                    }
+
+
+
 
                 }
                 else {
                     try
                     {
-                        resetVentana();
+                        this.Invoke((Action)(() =>
+                        {
+                            btn_confirmar.Enabled = false;
+                        }));
+                            resetVentana();
                         this.Invoke(new Action(() => lbl_principal.Text = "No encontrado. Favor vuelva a escanear el dedo"));
                         Task.Run(() => lbl_principal.ForeColor = Color.Red);
 
@@ -260,9 +250,57 @@ namespace DDigital
 
 
         }
+        public void VerificarFirma(HUELLA huella)
+        {
+            work_flow wf = new work_flow();
+         
+            int ESTADO = 0;
+            try
+            {              
 
+                if (huella._HUE_IDENTIDAD != null)
+                {
+                    //para huella propia
+               
+                    ESTADO = wf.Verifica_firmas(huella, _CRED, 0);
+                    if (ESTADO == 1)
+                    {
+                        lbl_principal.Invoke(new Action(() => lbl_principal.Text = "La huella pertenece al afiliado"));
+                        lbl_principal.Invoke(new Action(() => lbl_principal.ForeColor = Color.Green));
+
+                    }
+                    else if (ESTADO == 0)
+                    {
+                        //para personas autorizadas
+                        ESTADO = wf.Verifica_firmas(huella, _CRED, 1);
+                        var mensaje = ESTADO == 1 ? "La huella pertenece a una persona autorizada" : "La huella NO coincide como persona autorizada";
+                        var colorTexto = ESTADO == 1 ? Color.Green : Color.Red;
+                        lbl_principal.Invoke(new Action(() => lbl_principal.Text = mensaje));
+                        lbl_principal.Invoke(new Action(() => lbl_principal.ForeColor = colorTexto));
+                    }
+                    else if (ESTADO < 0)
+                    {
+                        lbl_principal.Invoke(new Action(() => lbl_principal.Text = $"Esta persona mancomuna ésta cuenta ({_CRED.cta})"));
+                        lbl_principal.Invoke(new Action(() => lbl_principal.ForeColor = Color.SteelBlue));
+                    }
+
+                }
+            }
+            finally
+            {
+                this.Invoke(new Action(() => {
+                    // pictureBox1.Visible = ESTADO == 1;
+                    lbl_verifique.Text = ESTADO == 1 ? "VERIFICADO POR: " + _CRED.usr_logged.ToString() : "Huella NO Verificada";
+                    lbl_verifique.ForeColor = ESTADO == 1 ? Color.Green : Color.Red;
+                    btn_confirmar.Enabled = ESTADO == 1 ? true : false;
+                }));
+            }
+
+
+        }
         private void Verificacion_Load(object sender, EventArgs e)
         {
+           
             _CRED = _sender.CRED_;
             UT = new UTILIDADES();
 
@@ -285,7 +323,12 @@ namespace DDigital
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            if (_CRED.fromAction=="1")
+            cancelar=true;
+            _sender.CancelCaptureAndCloseReader(this.OnCaptured);
+
+
+       
+            if (_CRED.fromAction == "1")
             {
                 Application.Exit();
             }
@@ -293,12 +336,50 @@ namespace DDigital
             {
                 this.Close();
             }
+           
+           
             
+        }
+        private DATA_INTERSEPTOR Verificacion_cancelada()
+        {
+            DATA_INTERSEPTOR link = new DATA_INTERSEPTOR();
+            link.FLAG = "0";
+            link.NOMBRE_VERIFICA = "";
+            link.HUE_IDENTIDAD = "0";
+            link.HUE_CODIGO = "0";
+            link.TIPO_PER = "0";
+            link.USR_VERIFICO = _CRED.usr_logged;
+            return link;
+        }
+        private DATA_INTERSEPTOR Verificacion_aceptada()
+        {
+            DATA_INTERSEPTOR link = new DATA_INTERSEPTOR();
+            link.FLAG = "1";
+            link.NOMBRE_VERIFICA = persona.NOMBRE;
+            link.HUE_IDENTIDAD = persona.IDENTIDAD;
+            link.HUE_CODIGO = persona.CODIGO;
+            link.TIPO_PER = persona.TIPO;
+            link.USR_VERIFICO = _CRED.usr_logged;
+            return link;
         }
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
+            cancelar = false;
+            UT = new UTILIDADES();
+            if (UT.ExportarTXT((cancelar ? Verificacion_cancelada() : Verificacion_aceptada())))
+            {
+                if (_CRED.fromAction == "1")
+                {
+                    Application.Exit();
 
+                }
+                else
+                {
+                    this.Close();
+                }
+            }          
+            
         }
 
         private void Verificacion_FormClosing(object sender, FormClosingEventArgs e)
@@ -306,8 +387,14 @@ namespace DDigital
             if (_CRED.fromAction == "1")
             {
                 Application.Exit();
+
             }
            
+        }
+
+        private void btn_lista_hue_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

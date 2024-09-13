@@ -18,7 +18,15 @@ namespace ProyectoDIGITALPERSONA
         private string UID = "HID";
         private string PWD = "hid@123456";
         UTILIDADES UT = new UTILIDADES();
+        
         public ODBC_CONN() {
+            if (!probarConexion(UID, PWD))
+            {
+                MessageBox.Show(UT.HAS_ERROS("DB00000"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+           
+            }
+            
             connectionString = string.Format("DSN=SISC;UID={0};PWD={1};", UID, PWD);
             db_con = new OdbcConnection(connectionString);
               
@@ -109,8 +117,10 @@ namespace ProyectoDIGITALPERSONA
             }
             catch (Exception E)
             {
-                MessageBox.Show(UT.HAS_ERROS("DB00002") + E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                Console.WriteLine("Error en la consulta SELECT: " + E.Message);
+                throw new Exception(UT.HAS_ERROS("DB00002") + E.Message);
+           
+                //MessageBox.Show(UT.HAS_ERROS("DB00002") + E.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //Console.WriteLine("Error en la consulta SELECT: " + E.Message);
             }
             finally
             {
@@ -156,6 +166,45 @@ namespace ProyectoDIGITALPERSONA
                 db_con.Close();
             }
             return contador;
+        }
+
+        public string primeraCol(string consulta, Dictionary<string, object> parameters = null)
+        {
+            string valor="";
+            try
+            {
+                using (db_con)
+                {
+                    db_con.Open();
+                    using (OdbcCommand cmd = new OdbcCommand(consulta, db_con))
+                    {
+
+                        if (parameters != null)
+                        {
+                            foreach (KeyValuePair<string, object> parametro in parameters)
+                            {
+                                cmd.Parameters.AddWithValue(parametro.Key, parametro.Value);
+                            }
+                        }
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            valor = result.ToString();
+                        }
+                    }
+                }
+                Console.WriteLine("SE REALIZÒ LA CONSULTA CON EXITO");
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(UT.HAS_ERROS("DB00004") + E.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                db_con.Close();
+            }
+            return valor;
         }
 
         public bool SelectExisteElvalor( string consulta, Dictionary<string, string> ValorComparar= null)

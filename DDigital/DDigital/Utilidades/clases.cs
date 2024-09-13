@@ -31,6 +31,18 @@ namespace DDigital.Utilidades
         public string _USR_AGREGO { get; set; }
 
     }
+    public class HISTO_HUELLAS
+    {
+        public string _HUE_ID { get; set; }
+        public string _HUE_CODIGO { get; set; }
+        public object _HUE_IDENTIDAD { get; set; }
+        public string _TIPO_PER { get; set; }
+        public DateTime _HUE_FECHA_AGREGO { get; set; }
+        public DateTime _HUE_FECHA_ELIMINA { get; set; }
+        public string _HUE_MOTIVO_ELIMINA { get; set; }
+        public string _HUE_USR_ELIMINA { get; set; }
+        public string _HUE_USR_AGREGO { get; set; }
+    }
 
     public class DATA_PERSONA
     {
@@ -52,5 +64,18 @@ namespace DDigital.Utilidades
         public string fil { get; set; }
         //subidentificador
         public string usr_logged { get; set; } //ESTO PARA INICIAR SESION
+    }
+
+
+    public class DATA_INTERSEPTOR
+    { 
+        public string NOMBRE_VERIFICA { get; set; }
+        public string HUE_CODIGO { get; set; }
+        public string HUE_IDENTIDAD { get; set; }
+        public string TIPO_PER {  get; set; }
+        public string FLAG {  get; set; }      
+        public string USR_VERIFICO { get; set; }
+
+
     }
 }
