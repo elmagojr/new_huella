@@ -103,6 +103,16 @@ namespace DDigital.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap huella_dactilar {
+            get {
+                object obj = ResourceManager.GetObject("huella-dactilar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MD {
             get {
                 object obj = ResourceManager.GetObject("MD", resourceCulture);

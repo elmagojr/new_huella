@@ -120,69 +120,79 @@ namespace DDigital.Interfaz
 
         public DATA_PERSONA InformacionVerificacion(string IDENTIDAD, int tipo)
         {
-
             DATA_PERSONA dp = new DATA_PERSONA();
             HUELLA dh = new HUELLA();
             ODBC_CONN con = new ODBC_CONN();
             sql = new QUERIES();
             UT = new UTILIDADES();
-            Dictionary<string, object> parametros = new Dictionary<string, object> {
+
+            try
+            {
+              
+                Dictionary<string, object> parametros = new Dictionary<string, object> {
                             {"@identidad",IDENTIDAD },
                             {"@_tipo",  tipo}
                         };
-            DataTable data_gen = con.EjecutarConsultaSelect(sql.SELECT_SP_BUSQUEDA, parametros);
+                DataTable data_gen = con.EjecutarConsultaSelect(sql.SELECT_SP_BUSQUEDA, parametros);
 
-            if (data_gen.Rows.Count>0)
-            {
-                using (DataTableReader reader = data_gen.CreateDataReader())
+                if (data_gen.Rows.Count > 0)
                 {
-                    while (reader.Read())
+                    using (DataTableReader reader = data_gen.CreateDataReader())
                     {
-                        if (tipo == 1) //SOLO DATA PERSONA
+                        while (reader.Read())
                         {
-                            string nombre = reader["NOMBRE"].ToString();
-                            string identidad = reader["IDENTIDAD"].ToString();
-                            string CODIGO = reader["CODIGO"].ToString();
-                            string tipo_per = reader["TIPO"].ToString();
-                            //data general persona
-                            dp.NOMBRE = nombre;
-                            dp.TIPO = tipo_per;
-                            dp.CODIGO = CODIGO;
-                            dp.IDENTIDAD = identidad;
+                            if (tipo == 1) //SOLO DATA PERSONA
+                            {
+                                string nombre = reader["NOMBRE"].ToString();
+                                string identidad = reader["IDENTIDAD"].ToString();
+                                string CODIGO = reader["CODIGO"].ToString();
+                                string tipo_per = reader["TIPO"].ToString();
+                                //data general persona
+                                dp.NOMBRE = nombre;
+                                dp.TIPO = tipo_per;
+                                dp.CODIGO = CODIGO;
+                                dp.IDENTIDAD = identidad;
+                                dp.ESTADO= reader["ESTADO"].ToString();
+                            }
+                            //else
+                            //{
+
+                            //    string nombre = reader["NOMBRE"].ToString();
+                            //    string identidad = reader["IDENTIDAD"].ToString();
+                            //    string CODIGO = reader["CODIGO"].ToString();
+                            //    string tipo_per = reader["TIPO"].ToString();
+
+                            //    string dedo = reader["DEDO"].ToString();
+                            //    string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
+                            //    string FECHA = reader["FECHA_CREACION"].ToString();
+                            //    MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
+                            //    string hue_id = reader["HUE_ID"].ToString();
+
+
+                            //    string usr = reader["USR_AGREGO"].ToString();
+
+                            //    //data general persona
+                            //    dp.NOMBRE = nombre;
+                            //    dp.TIPO = tipo_per;
+                            //    dp.CODIGO = CODIGO;
+                            //    dp.IDENTIDAD = identidad;
+                            //    //data de su huella
+                            //    dh._DEDO = UT.identificaDedo(dedo);
+                            //    dh._HUE_OBSERVACION = OBSERVACION;
+                            //    dh._FECHA_CREACION = DateTime.Parse(FECHA);
+                            //    dh._HUE_ID = hue_id;
+                            //    dh._USR_AGREGO = usr;
+                            //    dh._HUELLA_SAMPLE = MEMORIA.ToArray();
+                            //}
+
                         }
-                        //else
-                        //{
-
-                        //    string nombre = reader["NOMBRE"].ToString();
-                        //    string identidad = reader["IDENTIDAD"].ToString();
-                        //    string CODIGO = reader["CODIGO"].ToString();
-                        //    string tipo_per = reader["TIPO"].ToString();
-
-                        //    string dedo = reader["DEDO"].ToString();
-                        //    string OBSERVACION = reader["HUE_OBSERVACION"].ToString();
-                        //    string FECHA = reader["FECHA_CREACION"].ToString();
-                        //    MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA_SAMPLE"]);
-                        //    string hue_id = reader["HUE_ID"].ToString();
-
-
-                        //    string usr = reader["USR_AGREGO"].ToString();
-
-                        //    //data general persona
-                        //    dp.NOMBRE = nombre;
-                        //    dp.TIPO = tipo_per;
-                        //    dp.CODIGO = CODIGO;
-                        //    dp.IDENTIDAD = identidad;
-                        //    //data de su huella
-                        //    dh._DEDO = UT.identificaDedo(dedo);
-                        //    dh._HUE_OBSERVACION = OBSERVACION;
-                        //    dh._FECHA_CREACION = DateTime.Parse(FECHA);
-                        //    dh._HUE_ID = hue_id;
-                        //    dh._USR_AGREGO = usr;
-                        //    dh._HUELLA_SAMPLE = MEMORIA.ToArray();
-                        //}
-
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
             }
 
             return dp;
@@ -269,7 +279,7 @@ namespace DDigital.Interfaz
             sql = new QUERIES();
             Dictionary<string, object> ListParam = new Dictionary<string, object>()
                 {
-                    {"@IDENTIDAD", identidad },      
+                    {"@IDENTIDAD", identidad },                  
                     { "@_TIPO", 2 }
                 };
             DataTable dt = new DataTable();
@@ -395,6 +405,140 @@ namespace DDigital.Interfaz
             int conteo = conn.CountSelect(sql.Es_mancomunada, pa);
             return conteo;
         }
+
+        public string trae_secuencial()
+        {
+            ODBC_CONN cn = new ODBC_CONN();
+            sql = new QUERIES();
+
+            try
+            {               
+                return cn.primeraCol(sql.secuencial,null);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+        //roles y permisos
+        public DataTable listaUsuarios() { 
+            sql = new QUERIES();
+            ODBC_CONN bd = new ODBC_CONN();
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = bd.EjecutarConsultaSelect(sql.ListaUsuarios);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+          
+            return dt;
+        }
+        public DataTable ListaRoles() { 
+            DataTable dataTable = new DataTable();
+            ODBC_CONN bd = new ODBC_CONN();
+            sql = new QUERIES();
+
+            try
+            {
+                dataTable = bd.EjecutarConsultaSelect(sql.ListaRoles);
+            }
+            catch (Exception ex)      
+            {
+                throw new Exception(ex.Message);
+               
+
+            }
+
+            return dataTable;
+        }
+        public int roles_Admin(ROLES ROL, int tipo)
+        {
+            ODBC_CONN cn = new ODBC_CONN();
+            sql = new QUERIES();
+            try
+            {
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                     {
+                        {"@TIPO",tipo },{"@ID_ROLHUE",ROL.ID_ROLHUE }, {"@NOMBRE_ROLHUE",ROL.NOMBRE_ROLHUE },{"@PERMISOS_ROLHUE", ROL.PERMISOS_ROLHUE},{"@USR_AGREGO_ROLHUE", ROL.USR_AGREGO_ROLHUE}
+                     };
+               return cn.CountSelect(sql.SP_USR_PERMISOS_HUE, parametros);
+              
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public int registraAcceso(Token_Payload pl, ROLES rol, int tipo)
+        {
+            sql = new QUERIES();
+            Security secu = new Security();
+            ODBC_CONN CN = new ODBC_CONN();
+            string token = secu.GenerarToken("toUsuario", pl);
+
+                Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                   {"@tipo",tipo }, {"@ID_ROLUSR", rol.ID_ROLHUE },{"@NOMBRE_USR", pl.NOMBRE_USR},{"@TOKEN_ID", token},{"@USR_CREADO_USR", rol.USR_AGREGO_ROLHUE}
+                };
+
+                return  CN.CountSelect(sql.SP_USR_PERMISOS_HUE, parametros);
+
+
+        }
+
+        public DataTable informacion_acceso (string usuario) 
+        {
+            sql = new QUERIES();
+            ODBC_CONN cn = new ODBC_CONN();
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                    {"@USR", usuario}//DESDE EL DRID
+                };
+            DataTable dt = cn.EjecutarConsultaSelect(sql.JOIN_USR_ROL, parametros);
+            return dt;
+
+        }
+        public int Quitar_Accso_rol(string usuario)
+        { 
+            sql = new QUERIES();
+            ODBC_CONN cn = new ODBC_CONN();
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                   {"@nombre_usr",  usuario}
+
+                };
+            return cn.EjecutarParametrizada(sql.quitar_rol, parametros);
+        }
+
+        public int comprobarExistenciObjetos(string nombre_objeto)
+        {
+            sql = new QUERIES();
+            ODBC_CONN cn = new ODBC_CONN();
+            Dictionary<string, object> parametros = new Dictionary<string, object>
+                {
+                   {"@nombreObjeto",  nombre_objeto}
+
+                };
+            if (nombre_objeto == "comprobar_aditamentos")
+            {
+                return cn.EjecutarParametrizada(sql.FuntioncomprobarObjeto, parametros);
+            }
+            else
+            {  
+                return cn.EjecutarParametrizada(sql.comprobarObjeto, parametros);
+            }        
+
+        }
+
+
     }
 
 

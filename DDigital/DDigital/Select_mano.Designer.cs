@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Select_mano));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlSelectMano = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.p_izquierda2 = new System.Windows.Forms.PictureBox();
             this.ci1 = new System.Windows.Forms.CheckBox();
@@ -51,7 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ch_activarManoD = new System.Windows.Forms.CheckBox();
             this.ch_activarManoI = new System.Windows.Forms.CheckBox();
-            this.tabControl1.SuspendLayout();
+            this.tabControlSelectMano.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.p_izquierda2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_izquierda1)).BeginInit();
@@ -60,17 +60,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.p_derecha1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControlSelectMano
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(16, 63);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(323, 350);
-            this.tabControl1.TabIndex = 4;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControlSelectMano.Controls.Add(this.tabPage1);
+            this.tabControlSelectMano.Controls.Add(this.tabPage2);
+            this.tabControlSelectMano.Location = new System.Drawing.Point(16, 63);
+            this.tabControlSelectMano.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControlSelectMano.Name = "tabControlSelectMano";
+            this.tabControlSelectMano.SelectedIndex = 0;
+            this.tabControlSelectMano.Size = new System.Drawing.Size(323, 350);
+            this.tabControlSelectMano.TabIndex = 4;
+            this.tabControlSelectMano.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -316,7 +316,7 @@
             this.ch_activarManoI.AutoSize = true;
             this.ch_activarManoI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ch_activarManoI.ForeColor = System.Drawing.Color.OrangeRed;
-            this.ch_activarManoI.Location = new System.Drawing.Point(19, 434);
+            this.ch_activarManoI.Location = new System.Drawing.Point(20, 434);
             this.ch_activarManoI.Name = "ch_activarManoI";
             this.ch_activarManoI.Size = new System.Drawing.Size(171, 22);
             this.ch_activarManoI.TabIndex = 9;
@@ -335,7 +335,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlSelectMano);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -344,7 +344,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selección de Mano";
             this.Load += new System.EventHandler(this.Select_mano_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlSelectMano.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.p_izquierda2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p_izquierda1)).EndInit();
@@ -358,7 +358,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlSelectMano;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox p_izquierda1;
         private System.Windows.Forms.TabPage tabPage2;

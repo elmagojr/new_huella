@@ -23,12 +23,15 @@ namespace DDigital
         int count = 0;
         Bitmap ultima_imagen_huella;
         UTILIDADES UT;
+        PERMISOS _permisos;
         bool cancelar=false;
 
         DATA_PERSONA persona;
         HUELLA huella;
         public Verificacion()
         {
+            
+  
             InitializeComponent();
            
      
@@ -64,11 +67,7 @@ namespace DDigital
                                 while (!EstadoLector())
                                 {
                                     lbl_principal.ForeColor = Color.Orange;
-                                  //  this.Invoke(new Action(() => lbl_principal.Text = "LECTOR DE HUELLAS DESCONECTADO"));
-                                    //Task.Run(() => lbl_principal.ForeColor = Color.Orange);
-
-                                    //this.Invoke(new Action(() => lbl_principal.Text = "LECTOR DE HUELLAS DESCONECTADO"));
-                                    //
+                                 
                                     _sender._reader.CancelCapture();
                                     _sender._reader.Dispose();
                                 }
@@ -300,7 +299,8 @@ namespace DDigital
         }
         private void Verificacion_Load(object sender, EventArgs e)
         {
-           
+            _permisos = _sender.PERMISSIONS_;
+            _sender.AplicarPermisos(this, _permisos);
             _CRED = _sender.CRED_;
             UT = new UTILIDADES();
 
@@ -389,12 +389,20 @@ namespace DDigital
                 Application.Exit();
 
             }
-           
+          
+
         }
 
         private void btn_lista_hue_Click(object sender, EventArgs e)
         {
+            DATA_PERSONA dp = new DATA_PERSONA();
+            dp = persona;
 
+            listado_huellas lh = new listado_huellas(false, dp);
+            lh._sender = this._sender;
+            lh.ShowDialog();
+            lh.Dispose();
+            lh = null;
         }
     }
 }

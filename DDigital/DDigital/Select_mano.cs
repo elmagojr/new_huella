@@ -16,9 +16,11 @@ namespace DDigital
 
     public partial class Select_mano : Form
     {
+        public Main_Menu _sender = new Main_Menu();
         MANO mano_seleccionada;
         List<string> Lcheks;
         string PA_VALOR = "";
+        PERMISOS _permisos;
         public Select_mano()
         {
             InitializeComponent();
@@ -26,9 +28,10 @@ namespace DDigital
 
         private void Select_mano_Load(object sender, EventArgs e)
         {
-           
+            _permisos = _sender.PERMISSIONS_;
+            _sender.AplicarPermisos(this, _permisos);
             Deshabilitar_checks();
-            label2.Text = (!ch_activarManoI.Checked && !ch_activarManoD.Checked) ? "Ambas Manos" : tabControl1.SelectedTab.Text;
+            label2.Text = (!ch_activarManoI.Checked && !ch_activarManoD.Checked) ? "Ambas Manos" : tabControlSelectMano.SelectedTab.Text;
         }
 
         private void Deshabilitar_checks()
@@ -41,7 +44,7 @@ namespace DDigital
             switch (Lcheks[0].Trim())
             {
                 case "D":
-                    tabControl1.SelectedTab = tabPage2;
+                    tabControlSelectMano.SelectedTab = tabPage2;
                     ch_activarManoD.Visible = true;
                     ch_activarManoD.Checked = true;
                     ch_activarManoI.Checked=false;
@@ -51,7 +54,7 @@ namespace DDigital
                     p_izquierda2.Visible = true;
                     break;
                 case "I":
-                    tabControl1.SelectedTab = tabPage1;
+                    tabControlSelectMano.SelectedTab = tabPage1;
                     ch_activarManoI.Visible = true;
                     ch_activarManoI.Checked = true;
                     ch_activarManoD.Checked=false;  
@@ -137,7 +140,7 @@ namespace DDigital
 
             List<string> list = new List<string>();
    
-            foreach (TabPage tabPage in tabControl1.TabPages)
+            foreach (TabPage tabPage in tabControlSelectMano.TabPages)
             {   
                 foreach (Control control in tabPage.Controls)
                 {  
@@ -216,13 +219,13 @@ namespace DDigital
         {
             //label2.Text = tabControl1.SelectedTab.Text;
 
-            if (tabControl1.SelectedIndex == 0)
+            if (tabControlSelectMano.SelectedIndex == 0)
             {
                 ch_activarManoI.Visible = true;
                 //ch_activarManoI.Checked = true;
                 ch_activarManoD.Visible = false;
             }
-            else if (tabControl1.SelectedIndex == 1)
+            else if (tabControlSelectMano.SelectedIndex == 1)
             {
                 ch_activarManoD.Visible = true;
                 //ch_activarManoD.Checked = true;
@@ -252,14 +255,14 @@ namespace DDigital
         {
             ch_activarManoD.Checked = false;
             p_izquierda1.Visible = true; p_izquierda2.Visible = false; p_derecha2.Visible = true; p_derecha1.Visible = false;
-            label2.Text = (!ch_activarManoI.Checked && !ch_activarManoD.Checked) ? "Ambas Manos" : tabControl1.SelectedTab.Text;
+            label2.Text = (!ch_activarManoI.Checked && !ch_activarManoD.Checked) ? "Ambas Manos" : tabControlSelectMano.SelectedTab.Text;
         }
 
         private void ch_activarManoD_Click(object sender, EventArgs e)
         {
             p_izquierda1.Visible = false; p_izquierda2.Visible = true; p_derecha2.Visible = false; p_derecha1.Visible = true;
             ch_activarManoI.Checked = false;
-            label2.Text = (!ch_activarManoI.Checked && !ch_activarManoD.Checked) ? "Ambas Manos" : tabControl1.SelectedTab.Text;
+            label2.Text = (!ch_activarManoI.Checked && !ch_activarManoD.Checked) ? "Ambas Manos" : tabControlSelectMano.SelectedTab.Text;
         }
     }
 }

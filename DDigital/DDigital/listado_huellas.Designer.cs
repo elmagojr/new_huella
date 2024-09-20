@@ -68,6 +68,7 @@
             // 
             // txt_eliminacion
             // 
+            this.txt_eliminacion.Enabled = false;
             this.txt_eliminacion.Location = new System.Drawing.Point(164, 392);
             this.txt_eliminacion.Margin = new System.Windows.Forms.Padding(4);
             this.txt_eliminacion.Multiline = true;
@@ -298,8 +299,12 @@
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "listado_huellas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de huellas";
             this.Load += new System.EventHandler(this.listado_huellas_Load);
             this.groupBox1.ResumeLayout(false);

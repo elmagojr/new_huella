@@ -6,17 +6,21 @@ using ProyectoDIGITALPERSONA;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DDigital
@@ -37,16 +41,165 @@ namespace DDigital
         QUERIES sql;
         public DATA_PERSONA d_persona;
         public string IDENTIDAD_FROM_OUT = "";
+        public INFO_SISTEMA INFORMACION_SYSTEM;
+        public PERMISOS PERMISSIONS_;
 
-        
+
+        public int primera_vez = Properties.Settings.Default.primerVez;
+
+
+
+        #region METODOS PARA PERMISOS   
+
       
+        public void AplicarPermisos(Form formulario, PERMISOS _permisos)
+        {
+            foreach (Control control in formulario.Controls)
+            {
+
+                if (control is TabControl tabcontrol)
+                {
+                    switch (control.Name)
+                    {
+                        case "tabControl1":
+                            control.Enabled = _permisos.RegistrarHuellas;
+                            break;
+                        case "tabControlSelectMano":
+                            // control.Enabled = _permisos.SeleccionarMano;                        
+                                PermisosTabspages(tabcontrol, _permisos);
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+                }
+                if (control is CheckBox checkbox)
+                {
+                    switch (control.Name)
+                    {
+                        case "ch_activarManoI":                           
+                        case "ch_activarManoD":
+                            control.Enabled = _permisos.SeleccionarMano;
+                            break;                    
+                        default:
+                            break;
+                    }
+
+                }
+                if (control is System.Windows.Forms.Button botones)
+                {
+                    switch (control.Name)
+                    {
+                        case "button1":
+                            control.Enabled = _permisos.VerificarHuellas;
+                            break;
+                        case "btn_lista_hue":
+                            control.Visible = _permisos.VerHuellas;
+                            break;
+                        case "btn_eliminar":
+                            //control.Enabled = _permisos.EliminarHuellas;
+                            break;
+                        case "btn_quitar":
+                            //if (_permisos.AdmonUsuarios)
+                            //{
+                            //    control.Enabled = _permisos.QuitarAccesoUsr;
+                            //}
+                            break;
+                        case "BTN_CAMBIAR_ACCESO":
+                            //control.Enabled = _permisos.QuitarAccesoUsr;
+                            break;
+                               
+                        default:
+                            break;
+                    }
+
+                }
 
 
 
+                //para menus
+                if (control is MenuStrip menuStrip)
+                {
+                    foreach (ToolStripMenuItem item in menuStrip.Items)
+                    {
+                       PermisosMenus(item,_permisos);
+                    }
+                  
+                }
+
+            }
+        }
+        public void PermisosMenus(ToolStripMenuItem menu, PERMISOS perms)
+        {
+            switch (menu.Name)
+            {
+                case "listadoDeHuellasToolStripMenuItem":
+                    menu.Enabled = perms.VerHuellas;
+                    break;
+                case "administrarToolStripMenuItem":
+                    if (perms.AdmonUsuarios || perms.QuitarAccesoUsr)
+                    {
+                        menu.Enabled = true;
+                    }
+                    else
+                    {
+                        menu.Enabled = false;
+                    }
+
+              
+                    break;
+                default:
+                    break;
+            }
+            foreach (ToolStripMenuItem submenu in menu.DropDownItems)
+            {
+                PermisosMenus(submenu, perms);
+
+            }
+        }
+        public void PermisosTabspages(TabControl tabControl, PERMISOS perms)
+        {
+            foreach (TabPage tabpage in tabControl.TabPages)
+            {
+                switch (tabpage.Name)
+                {
+                    case "tabPage1":
+                    case "tabPage2":
+                        foreach (Control controlPage in tabpage.Controls)
+                        {                            
+                                if (controlPage is CheckBox)
+                                {
+                                    switch (controlPage.Name)
+                                    {
+                                        case "cd1":
+                                        case "cd2":
+                                        case "cd3":
+                                        case "cd4":
+                                        case "cd5":
+                                        case "ci1":
+                                        case "ci2":
+                                        case "ci3":
+                                        case "ci4":
+                                        case "ci5":
+                                            controlPage.Enabled = perms.SeleccionarDedos;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }                            
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
 
 
+              
+        }
 
-
+        #endregion
 
 
 
@@ -514,13 +667,18 @@ namespace DDigital
                // verifica2();
                 bool existe =  VerificarExistenciaHuella(resultConversion.Data);
                 if (existe)
-                {
-                    MessageBox.Show(UT.HAS_ERROS("HD00001"), "Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //Task.Run(() => _reader.Dispose());
-                    //Task.Run(() => _reader.CancelCapture());
-                    Task.Run(() => CancelarEnrrol());
-                    //return;
+                {                   
 
+                        Task.Run(() =>
+                        {
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                MessageBox.Show(UT.HAS_ERROS("HD00001"), "Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            });
+                        });
+                        Task.Run(() => _reader.CancelCapture());
+                    //Task.Run(() => CancelarEnrrol());
+                
 
                 }
 
@@ -667,19 +825,69 @@ namespace DDigital
             InitializeComponent();
            
         }
+        public void TieneAcceso(string acceso)
+        {
+           
 
+            if (acceso == "NO")
+            {
+                MessageBox.Show("USTED NO TIENE ACCESO A LAS FUNCIONES DE ESTE ADDON, FAVOR CONTACTE CON SOPORTE O VERIFIQUE SU ACCESO A ESTE.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.Close();
+                Application.Exit();
+                return;
+            } 
+        }
         private void Main_Menu_Load(object sender, EventArgs e)
         {
+            UT = new UTILIDADES();
+            wf = new work_flow();
+            Security secu = new Security();
+            d_persona = new DATA_PERSONA();
+            PERMISSIONS_ = new PERMISOS();
+            CRED_ = UT.LEER_CREDENCIALES();
+            PERMISSIONS_ = secu.ObtenerPermisos(CRED_.usr_logged);
+            if (CRED_.usr_logged.ToUpper() == "HID")
+            {
+              PERMISSIONS_ =  UT.permisosSuperUS;
+            }
+            if (primera_vez == 0 && CRED_.usr_logged.ToUpper() == "HID") //primera configuracion O EL HID o el alguien con privilegios?
+            {
+                PrimeraVez();
+            }
+       
+
+            TieneAcceso(PERMISSIONS_.Tiene_acceso);
+
+            if (PERMISSIONS_!=null)
+            {
+
+                AplicarPermisos(this, PERMISSIONS_);
+            }
+            
+
+
+            INFORMACION_SYSTEM = secu.trae_info_sistema();//INFORMACION DE LA PC LOCAL
             timer1.Start();
             lbl_mano.Text = tabControl1.SelectedTab.Text;
  
-            UT = new UTILIDADES();
-            wf = new work_flow();
-            d_persona = new DATA_PERSONA();
-            CRED_ =  UT.LEER_CREDENCIALES();
+           
+         
             try
             {
-                d_persona = wf.InformacionVerificacion(CRED_.identidad, 1);
+                if (CRED_!=null)
+                {
+                    d_persona = wf.InformacionVerificacion(CRED_.identidad, 1);
+                }
+                else
+                {
+                    MessageBox.Show("ERROR IO0002: " + UT.HAS_ERROS("IO0002"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                   Application.Exit();
+                }
+                if (d_persona.ESTADO!="0" && CRED_.cta != "ver")
+                {
+                    MessageBox.Show("El afiliado que intenta registrar NO está Activo. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    Application.Exit();
+                }
                 txt_nombre.Text = d_persona.NOMBRE;
                 txt_identidad.Text = d_persona.IDENTIDAD;
                 txt_tipo_per.Text = d_persona.TIPO;
@@ -718,7 +926,15 @@ namespace DDigital
                             }
 
                             break;
-                        case "":
+                        case "0":
+                            if (CRED_.nombre == "conf")
+                            {
+                                listadoDeHuellasToolStripMenuItem.Enabled = false;
+                                tabControl1.Enabled = false;
+                                button1.Enabled = false;
+                            }                           
+                         
+                            break;
                         default:
                             break;
                     }
@@ -744,6 +960,33 @@ namespace DDigital
          
 
 
+        }
+        private void PrimeraVez()
+        {
+            
+            carga_primeravez cpv = new carga_primeravez();
+            cpv.ShowDialog();
+            cpv.Dispose();
+
+
+            Admin admin = new Admin();
+            admin._sender = this;
+            admin.ShowDialog();
+            admin.Dispose();
+            admin = null;
+
+            
+                Select_mano select_Mano = new Select_mano();
+                select_Mano._sender = this;
+                select_Mano.ShowDialog();
+                select_Mano.Dispose();
+                select_Mano = null;
+
+                Properties.Settings.Default.primerVez = 1;
+                Properties.Settings.Default.Save();
+             
+          
+           
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -877,6 +1120,13 @@ namespace DDigital
             vr.ShowDialog();
             vr.Dispose();
             vr = null;
+
+
+            //Task.Run(() =>
+            //_reader.Dispose()
+            //);
+
+          //  Task.Run(() => _reader = null);
             //int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
             //lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
         }
@@ -906,6 +1156,7 @@ namespace DDigital
                 return; 
             }
             Select_mano select_Mano = new Select_mano();
+            select_Mano._sender = this;
             select_Mano.ShowDialog();
             select_Mano.Dispose();
             select_Mano = null;
@@ -916,14 +1167,39 @@ namespace DDigital
 
         private void Main_Menu_Activated(object sender, EventArgs e)
         {
-            int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+            if (CRED_!=null)
+            {
+                Security secu   = new Security();
+                PERMISSIONS_ = secu.ObtenerPermisos(CRED_.usr_logged);
+                if (CRED_.usr_logged.ToUpper() == "HID")
+                {
+                    PERMISSIONS_ = UT.permisosSuperUS;
+                }
+                if (PERMISSIONS_!=null)
+                {
+                    AplicarPermisos(this, PERMISSIONS_);
 
-            lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
-            //CancelarEnrrol();
+                }
+
+                int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
+
+                lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
+            }
+            if (_reader!=null)
+            {
+                btn_cancel_enrol.Visible = true;
+            }
+            
+            CancelarEnrrol();
         }
 
         private void listadoDeHuellasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_reader != null)
+            {
+                MessageBox.Show("Debe cancelar el enrolamiento que inicio", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             bool usardni = false;
             DialogResult result = MessageBox.Show("¿Desea usar el DNI de la persona Actual?", "Usar DNI", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -934,7 +1210,7 @@ namespace DDigital
                 return;
             }
 
-            listado_huellas lh = new listado_huellas(usardni);
+            listado_huellas lh = new listado_huellas(usardni, d_persona);
             lh._sender = this;
             lh.ShowDialog();
             lh.Dispose();
@@ -942,6 +1218,28 @@ namespace DDigital
             //int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
             //lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
 
+        }
+
+        private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_reader != null)
+            {
+                MessageBox.Show("Debe cancelar el enrolamiento que inició", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Admin admin = new Admin();
+            admin._sender = this;
+            admin.ShowDialog();
+            admin.Dispose();
+            admin = null;
+        }
+
+        private void resetPrimeraVezToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.primerVez=0;
+            
+            Properties.Settings.Default.Save();
+            Application.Exit();
         }
     }
 }

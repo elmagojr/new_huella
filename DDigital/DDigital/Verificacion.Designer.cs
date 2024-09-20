@@ -270,10 +270,12 @@
             this.Controls.Add(this.v_pictureBox1);
             this.Controls.Add(this.lbl_principal);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Verificacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verificacion";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Verificacion_FormClosing);
             this.Load += new System.EventHandler(this.Verificacion_Load);

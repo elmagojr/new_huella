@@ -121,8 +121,8 @@
   <data name="1724972609047" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1724972609047.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="denied" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\denied.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bloquedo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bloquedo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MD1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MD1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,13 +130,16 @@
   <data name="MD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="denied" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\denied.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bloquedo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bloquedo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="huella-dactilar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huella-dactilar.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

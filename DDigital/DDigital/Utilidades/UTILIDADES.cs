@@ -12,8 +12,10 @@ using System.Windows.Forms;
 
 namespace DDigital.Utilidades
 {
+   
     internal class UTILIDADES
     {
+        public PERMISOS permisosSuperUS = new PERMISOS { AdmonRoles=true, AdmonUsuarios=true, EliminarHuellas=true, nombre_rol="SU", QuitarAccesoUsr=true, RegistrarHuellas=true, SeleccionarDedos=true, SeleccionarMano=true, Tiene_acceso="SI", VerHuellas=true, VerificarHuellas=true, VerificarMancomuna=true};
         public Bitmap CreateBitmap(byte[] bytes, int width, int height)
         {
             if (bytes == null || bytes.Length == 0)
@@ -228,6 +230,8 @@ namespace DDigital.Utilidades
                 return false;
             }
         }
+
+
 
     }
 

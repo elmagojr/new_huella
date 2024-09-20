@@ -25,13 +25,19 @@ namespace DDigital
         CREDENCIALES _CRED;
         UTILIDADES UT;
         bool usarDNI_;
-
+        DATA_PERSONA dp_from_verificacion;
         List<HISTO_HUELLAS> idis;
-        public listado_huellas(bool usarDNI)
+        PERMISOS _permisos;
+        public listado_huellas(bool usarDNI, DATA_PERSONA persona = null)
         {
 
             usarDNI_ = usarDNI;
             InitializeComponent();
+            if (persona != null)
+            {
+                dp_from_verificacion = persona;
+            }
+         
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -66,11 +72,17 @@ namespace DDigital
 
         private void listado_huellas_Load(object sender, EventArgs e)
         {
-
+            _permisos = _sender.PERMISSIONS_;
+            _sender.AplicarPermisos(this, _permisos);
             _CRED = _sender.CRED_;
             if (usarDNI_)
             {
                 cargarData(_CRED.identidad);
+            }
+
+            if (dp_from_verificacion!= null && !usarDNI_)
+            {
+                cargarData(dp_from_verificacion.IDENTIDAD);
             }
         }
 
@@ -89,11 +101,17 @@ namespace DDigital
                     MessageBox.Show("No se encontro datos para esta persona", "NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
+                btn_eliminar.Enabled = false;
+                txt_eliminacion.Enabled = false;
+
+                dataGridView1.SelectionChanged -= dataGridView1_SelectionChanged;
                 // dataGridView1.DataSource = data_huellas;
                 //dataGridView1.Rows.Clear();
                 //dataGridView1.SelectionChanged -= dataGridView1_SelectionChanged;
 
+                //dataGridView1.ClearSelection();
                 dataGridView1.Rows.Clear();
+
                 foreach (DataRow row in data_huellas.Rows)
                 {
                     txt_identidad.Text = row[1].ToString();
@@ -113,7 +131,7 @@ namespace DDigital
 
                     dataGridView1.Columns[6].Visible = false; dataGridView1.Columns[7].Visible = false;
                     dataGridView1.ClearSelection();
-                    
+                    dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
                 }
 
             }
@@ -147,13 +165,16 @@ namespace DDigital
         }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-
+            //dataGridView1.ClearSelection();
 
             List<HISTO_HUELLAS> selectedID = new List<HISTO_HUELLAS>();
             idis = new List<HISTO_HUELLAS>();
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                btn_eliminar.Enabled = true;
+
+                btn_eliminar.Enabled = _permisos.EliminarHuellas;
+                txt_eliminacion.Enabled =_permisos.EliminarHuellas;
+
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     HISTO_HUELLAS BorraHuella = new HISTO_HUELLAS();

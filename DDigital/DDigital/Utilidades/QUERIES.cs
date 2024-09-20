@@ -18,5 +18,17 @@ namespace DDigital.Utilidades
        public readonly string Verificacion_transaccion = "call dba.VERIFICA_TRANSACCION_HUELLA(?,?,?,?,?,?)";
        public readonly string Es_mancomunada = "select count(*) from dba.FIRMAS_X_CUENTA where FXC_MANCOMUNADA ='1' and FXC_CTA_AHO =? and  fxc_filial =? and fxc_compania =?";
 
+        public readonly string secuencial = "SELECT LEFT((SELECT MAX (OFI_UNI_SEQ) AS SEQ FROM DBA.F_Oficinas where OFI_CODIGO =1), LENGTH((SELECT MAX (OFI_UNI_SEQ) AS SEQ FROM DBA.F_Oficinas where OFI_CODIGO =1)) - 4) AS Resultado";
+        //ROLES Y PERMISOS
+        public readonly string ListaUsuarios = "SELECT USU_CODIGO AS 'USUARIO', USU_NOMBRE AS 'NOMBRE USUARIO' FROM DBA.Usuarios where usuario <> 'HID' and  USU_ACTIVO =1";
+        public readonly string ListaRoles = "SELECT ID_ROLHUE,nombre_rolhue, permisos_rolhue FROM DBA.ROL_HUELLA";
+        public readonly string JOIN_USR_ROL = "SELECT ID_ROLUSR,NOMBRE_USR, nombre_rolhue, permisos_rolhue,TOKEN_ID FROM DBA.USUARIOS_HUELLAS join dba.rol_huella on ID_ROLUSR = id_rolhue where nombre_usr =?";
+        public readonly string SP_USR_PERMISOS_HUE = "CALL DBA.SP_USRS_HUELLAS(?,?,?, ?, ?)";
+        public readonly string quitar_rol = "DELETE FROM DBA.USUARIOS_HUELLAS WHERE NOMBRE_USR=?";
+        public readonly string comprobarObjeto = "SELECT DBA.comprobar_aditamentos(?)";
+        public readonly string FuntioncomprobarObjeto = "select count(*) from sys.SYSPROCEDURE where proc_name = 'comprobar_aditamentos'";
+
+
+
     }
 }

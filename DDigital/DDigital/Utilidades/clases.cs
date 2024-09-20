@@ -49,7 +49,8 @@ namespace DDigital.Utilidades
         public string IDENTIDAD { get; set; }
         public string CODIGO { get; set; }
         public string NOMBRE { get; set; }
-        public string TIPO { get; set; }  
+        public string TIPO { get; set; }
+        public string ESTADO { get; set; }
 
     }
 
@@ -68,14 +69,65 @@ namespace DDigital.Utilidades
 
 
     public class DATA_INTERSEPTOR
-    { 
+    {
         public string NOMBRE_VERIFICA { get; set; }
         public string HUE_CODIGO { get; set; }
         public string HUE_IDENTIDAD { get; set; }
-        public string TIPO_PER {  get; set; }
-        public string FLAG {  get; set; }      
+        public string TIPO_PER { get; set; }
+        public string FLAG { get; set; }
         public string USR_VERIFICO { get; set; }
 
 
     }
+
+
+    public class ROLES
+    {
+        public string ID_ROLHUE { get; set; }
+        public string NOMBRE_ROLHUE { get; set; }
+        public object PERMISOS_ROLHUE { get; set; }
+        public string USR_AGREGO_ROLHUE { get; set; }
+        public DateTime FECHA_CREA_ROLHUE { get; set; }
+        public DateTime FECHA_MODI_ROLHUE { get; set; }
+        public string USR_MODI_ROLHUE { get; set; }
+    }
+
+
+    public class Token_Payload
+    {
+        public string ListaPermisos { get; set; }
+        public string EsPermitido { get; set; }
+        public string NOMBRE_USR { get; set; }
+        public string ROL { get; set; }
+    }
+    public class PERMISOS
+    {
+        public string Tiene_acceso { get; set; }
+        public string nombre_rol {  get; set; }
+        public bool RegistrarHuellas { get; set; }
+        public bool VerificarHuellas { get; set; }
+        public bool VerificarMancomuna { get; set; }
+        public bool SeleccionarMano { get; set; }
+        public bool SeleccionarDedos { get; set; }
+        public bool VerHuellas { get; set; }
+        public bool EliminarHuellas { get; set; }
+        public bool AdmonUsuarios { get; set; }
+        public bool QuitarAccesoUsr { get; set; }
+        public bool AdmonRoles { get; set; }
+    }
+
+
+    public class INFO_SISTEMA
+    {
+        public string NOMBRE_MAQUINA { get; set; }
+        public string IP_MAQUINA { get; set; }
+        public string SEQUENCIAL_SISTEMA { get; set; }
+        public string USUARIO_MAQUINA { get; set; }
+        public string VERION_OS_MAQUINA { get; set; }
+        public string DOMINIO_MAQUINA { get; set; }
+        public string MACHINE_NAME { get; set; }
+
+
+    }
+
 }
