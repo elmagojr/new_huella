@@ -18,6 +18,7 @@ namespace DDigital.Interfaz
         //SISC
         QUERIES sql;
         UTILIDADES UT;
+        public INFO_SISTEMA INFORMACION_SYSTEM;
         public bool registro_huella(HUELLA _HUELLA)
         {
             ODBC_CONN bd = new ODBC_CONN();
@@ -289,26 +290,29 @@ namespace DDigital.Interfaz
 
         public int EliminarHuella(HISTO_HUELLAS itemBorra)
         {
+            Security secu = new Security();
+            INFORMACION_SYSTEM = secu.trae_info_sistema();
             ODBC_CONN db = new ODBC_CONN();
             sql = new QUERIES();
-            itemBorra._HUE_FECHA_ELIMINA = DateTime.Now;
+            itemBorra.HistoFechaAccion = DateTime.Now;
 
             Dictionary<string, object> DelPar = new Dictionary<string, object>()
             {
-                {"@id",itemBorra._HUE_ID}
+                {"@id",itemBorra.HistoId}
             };
             Dictionary<string, object> historico = new Dictionary<string, object>()
             {
-                {"@HISTO_HUE_ID",itemBorra._HUE_ID},
-                {"@HISTO_HUE_CODIGO",itemBorra._HUE_CODIGO},
-                {"@HISTO_HUE_IDENTIDAD",itemBorra._HUE_IDENTIDAD},
-                {"@HISTO_TIPO_PER",itemBorra._TIPO_PER},
-                {"@HISTO_HUE_FECHA_AGREGO",itemBorra._HUE_FECHA_AGREGO},
-                {"@HISTO_HUE_FECHA_ELIMINA",itemBorra._HUE_FECHA_ELIMINA},
-                {"@HISTO_HUE_MOTIVO_ELIMINA",itemBorra._HUE_MOTIVO_ELIMINA},
-                {"@HISTO_HUE_USR_ELIMINA",itemBorra._HUE_USR_ELIMINA},
-                {"@HISTO_HUE_USR_AGREGO",itemBorra._HUE_USR_AGREGO}
-
+                {"@HISTO_ID",itemBorra.HistoId},
+                {"@HISTO_TABLA",itemBorra.HistoTabla},
+                {"@HISTO_CAMPO",itemBorra.HistoCampo},
+                {"@HISTO_VANTERIOR",itemBorra.HistoVAnterior},
+                {"@HISTO_VACTUAL",itemBorra.HistoVActual},
+                {"@HISTO_ACCION",itemBorra.HistoAccion},
+                {"@HISTO_USR_ACCION",itemBorra.HistoUsrAccion},
+                {"@HISTO_FECHA_ACCION",itemBorra.HistoFechaAccion},
+                {"@HISTO_INFO_ADICIONAL",itemBorra.HistoInfoAdicional},
+                {"@HISTO_OBSERVACION",itemBorra.HistoObservacion},
+                //{"@HISTO_INFO_ADIC","ip:"+INFORMACION_SYSTEM.IP_MAQUINA+" userpc:"+INFORMACION_SYSTEM.USUARIO_MAQUINA+" namepc:"+INFORMACION_SYSTEM.MACHINE_NAME+" SOpc:"+INFORMACION_SYSTEM.VERION_OS_MAQUINA}
                 //esto puede cambiar 
             };       
             int borrado = db.EjecutarParametrizada(sql.EliminarHuella, DelPar);

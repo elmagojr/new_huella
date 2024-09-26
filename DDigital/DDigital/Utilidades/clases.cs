@@ -31,7 +31,7 @@ namespace DDigital.Utilidades
         public string _USR_AGREGO { get; set; }
 
     }
-    public class HISTO_HUELLAS
+    public class HISTO_HUELLAS1
     {
         public string _HUE_ID { get; set; }
         public string _HUE_CODIGO { get; set; }
@@ -42,7 +42,23 @@ namespace DDigital.Utilidades
         public string _HUE_MOTIVO_ELIMINA { get; set; }
         public string _HUE_USR_ELIMINA { get; set; }
         public string _HUE_USR_AGREGO { get; set; }
+        public string _HISTO_INFO_ADIC { get; set; }
     }
+
+    public class HISTO_HUELLAS
+    {
+        public string HistoId { get; set; }
+        public string HistoTabla { get; set; }
+        public string HistoCampo { get; set; }
+        public string HistoVAnterior { get; set; }
+        public string HistoVActual { get; set; }
+        public string HistoAccion { get; set; }
+        public string HistoUsrAccion { get; set; }
+        public DateTime HistoFechaAccion { get; set; }
+        public string HistoInfoAdicional { get; set; }
+        public string HistoObservacion { get; set; }
+    }
+
 
     public class DATA_PERSONA
     {

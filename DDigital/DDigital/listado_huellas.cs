@@ -72,6 +72,7 @@ namespace DDigital
 
         private void listado_huellas_Load(object sender, EventArgs e)
         {
+
             _permisos = _sender.PERMISSIONS_;
             _sender.AplicarPermisos(this, _permisos);
             _CRED = _sender.CRED_;
@@ -154,7 +155,8 @@ namespace DDigital
             int borrado = 0;
             foreach (var item in idis)
             {
-              borrado =    wf.EliminarHuella(item);
+                item.HistoObservacion = txt_eliminacion.Text;
+                borrado =    wf.EliminarHuella(item);
             }
             if (borrado>0)
             {
@@ -179,15 +181,15 @@ namespace DDigital
                 {
                     HISTO_HUELLAS BorraHuella = new HISTO_HUELLAS();
                     int rowIndex = row.Index;
-                    BorraHuella._HUE_ID = data_huellas.Rows[rowIndex][6].ToString();
-                    BorraHuella._HUE_CODIGO = data_huellas.Rows[rowIndex][7].ToString();
-                    BorraHuella._HUE_FECHA_AGREGO = DateTime.Parse(data_huellas.Rows[rowIndex][4].ToString());
-                    BorraHuella._HUE_USR_ELIMINA = _CRED.usr_logged;
-                    BorraHuella._HUE_USR_AGREGO = data_huellas.Rows[rowIndex][9].ToString();
-                    BorraHuella._HUE_IDENTIDAD = data_huellas.Rows[rowIndex][1].ToString();
-                    BorraHuella._TIPO_PER = data_huellas.Rows[rowIndex][8].ToString();
-                    BorraHuella._HUE_FECHA_ELIMINA = DateTime.Now;
-
+                    BorraHuella.HistoId = data_huellas.Rows[rowIndex][6].ToString();
+                    BorraHuella.HistoTabla = "HUELLAS_FIGERS";
+                    BorraHuella.HistoCampo = "HUELLA";
+                    BorraHuella.HistoVAnterior ="(NO_DATA)";
+                    BorraHuella.HistoVActual = "(NO_DATA)";
+                    BorraHuella.HistoUsrAccion = _CRED.usr_logged;
+                    BorraHuella.HistoInfoAdicional ="";
+                    BorraHuella.HistoObservacion = "";
+                   
 
                     selectedID.Add(BorraHuella);
 
@@ -217,6 +219,11 @@ namespace DDigital
               
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

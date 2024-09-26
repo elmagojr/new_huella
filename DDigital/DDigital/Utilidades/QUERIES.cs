@@ -14,7 +14,7 @@ namespace DDigital.Utilidades
        public readonly string DEDOS_REGISTRADOS = "select dedo from dba.HUELLAS_FIGERS where HUE_IDENTIDAD = ?";
        public readonly string sp_selccion_mano = "call dba.sp_select_mano(?,?)";
        public string EliminarHuella = $"DELETE FROM DBA.HUELLAS_FIGERS WHERE HUE_ID =?";
-       public string InsertarHistorialHuella = "INSERT INTO DBA.HISTO_HUELLAS (HISTO_HUE_ID,HISTO_HUE_CODIGO,HISTO_HUE_IDENTIDAD,HISTO_TIPO_PER,HISTO_HUE_FECHA_AGREGO,HISTO_HUE_FECHA_ELIMINA,HISTO_HUE_MOTIVO_ELIMINA,HISTO_HUE_USR_ELIMINA,HISTO_HUE_USR_AGREGO) VALUES (?,?,?,?,?,?,?,?,?)";
+       public string InsertarHistorialHuella = "INSERT INTO DBA.HISTO_HUELLAS (HISTO_TABLA,HISTO_CAMPO,HISTO_VANTERIOR,HISTO_VACTUAL,HISTO_ACCION,HISTO_USR_ACCION,HISTO_INFO_ADICIONAL,HISTO_OBSERVACION) VALUES(?,?,?,?,?,?,?,?)";
        public readonly string Verificacion_transaccion = "call dba.VERIFICA_TRANSACCION_HUELLA(?,?,?,?,?,?)";
        public readonly string Es_mancomunada = "select count(*) from dba.FIRMAS_X_CUENTA where FXC_MANCOMUNADA ='1' and FXC_CTA_AHO =? and  fxc_filial =? and fxc_compania =?";
 
