@@ -1195,6 +1195,7 @@ namespace DDigital
 
         private void listadoDeHuellasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            listado_huellas lh;
             if (_reader != null)
             {
                 MessageBox.Show("Debe cancelar el enrolamiento que inicio", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1205,12 +1206,19 @@ namespace DDigital
             if (result == DialogResult.Yes)
             {
                 usardni = true;
-            } else if (result == DialogResult.Cancel)
+                lh = new listado_huellas(usardni, d_persona);
+            } 
+            else if (result == DialogResult.No)
+            {
+                lh = new listado_huellas(false, null);
+             
+            }
+            else
             {
                 return;
             }
 
-            listado_huellas lh = new listado_huellas(usardni, d_persona);
+
             lh._sender = this;
             lh.ShowDialog();
             lh.Dispose();

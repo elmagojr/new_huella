@@ -22,19 +22,41 @@ namespace DDigital
             progressBar1.Minimum = 0;
             listObjetos  = new List<string>();
             listObjetos.AddRange(new string[] {
+                "func_trae_info_sys",
                 "comprobar_aditamentos",
-                "HISTO_HUELLAS",
-                "HUELLAS_FIGERS",
-                "FIRMAS_X_CUENTA",
-                "tgr_secuencial_fxc",
-                "after_actauliza_identidad_firmas",
-                "ROL_HUELLA",
-                "USUARIOS_HUELLAS",
+
+                "FIGERS",
+                "FILIALES_HUELLA",
+                "DEDO_MANO_ACTIVO",
+
                 "SP_BUSCAR_PERSONA",
+                "sp_firmas_digitales",
+                "FIRMAS_X_CUENTA",
                 "sp_select_mano",
-                "VERIFICA_TRANSACCION_HUELLA",
                 "SP_USRS_HUELLAS",
-                "HID"});
+                "VERIFICA_TRANSACCION_HUELLA",
+
+                "FIRMAS_X_CUENTA",
+                "after_actauliza_identidad_firmas",
+                "tgr_secuencial_fxc",
+
+                "HISTO_HUELLAS",
+
+                "HUELLAS_FIGERS",
+                "trg_tablas_parame",
+
+                "ROL_HUELLA",
+                "TGR_INSERTED",
+                "TGR_ONDELETE",
+                "TRG_ONUPDATE",
+
+                "USUARIOS_HUELLAS",
+                "TRG_DELETE_USR",
+                "TRG_UPDATE_USR",
+
+                "HID"
+
+            });
 
             progressBar1.Maximum=listObjetos.Count;
             progressBar1.Step=1;

@@ -294,22 +294,27 @@ namespace DDigital.Interfaz
             INFORMACION_SYSTEM = secu.trae_info_sistema();
             ODBC_CONN db = new ODBC_CONN();
             sql = new QUERIES();
+            
             itemBorra.HistoFechaAccion = DateTime.Now;
-
+            itemBorra.HistoInfoAdicional = "ip:" + INFORMACION_SYSTEM.IP_MAQUINA + " userpc:" + INFORMACION_SYSTEM.USUARIO_MAQUINA + " namepc:" + INFORMACION_SYSTEM.MACHINE_NAME + " SOpc:" + INFORMACION_SYSTEM.VERION_OS_MAQUINA;
+            itemBorra.HistoVActual = "(NO_DATA)";
+            itemBorra.HistoVAnterior = "(NO_DATA)";
+            itemBorra.HistoAccion = "D";
+            itemBorra.HistoIdentificador = itemBorra.HistoId;
             Dictionary<string, object> DelPar = new Dictionary<string, object>()
             {
                 {"@id",itemBorra.HistoId}
             };
             Dictionary<string, object> historico = new Dictionary<string, object>()
             {
-                {"@HISTO_ID",itemBorra.HistoId},
+                
                 {"@HISTO_TABLA",itemBorra.HistoTabla},
                 {"@HISTO_CAMPO",itemBorra.HistoCampo},
+                {"@HISTO_IDENTIFICADO",itemBorra.HistoIdentificador},
                 {"@HISTO_VANTERIOR",itemBorra.HistoVAnterior},
                 {"@HISTO_VACTUAL",itemBorra.HistoVActual},
                 {"@HISTO_ACCION",itemBorra.HistoAccion},
-                {"@HISTO_USR_ACCION",itemBorra.HistoUsrAccion},
-                {"@HISTO_FECHA_ACCION",itemBorra.HistoFechaAccion},
+                {"@HISTO_USR_ACCION",itemBorra.HistoUsrAccion},      
                 {"@HISTO_INFO_ADICIONAL",itemBorra.HistoInfoAdicional},
                 {"@HISTO_OBSERVACION",itemBorra.HistoObservacion},
                 //{"@HISTO_INFO_ADIC","ip:"+INFORMACION_SYSTEM.IP_MAQUINA+" userpc:"+INFORMACION_SYSTEM.USUARIO_MAQUINA+" namepc:"+INFORMACION_SYSTEM.MACHINE_NAME+" SOpc:"+INFORMACION_SYSTEM.VERION_OS_MAQUINA}

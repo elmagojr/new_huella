@@ -81,3 +81,109 @@ D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Syste
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.ValueTuple.xml
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.carga_primeravez.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe.config
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DDigital.pdb
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Logging.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Buffers.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Memory.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Numerics.Vectors.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Text.Encodings.Web.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Text.Json.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.ValueTuple.dll
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\DPXUru.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Logging.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Buffers.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Memory.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Numerics.Vectors.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Text.Encodings.Web.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Text.Json.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Debug\System.ValueTuple.xml
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.AssemblyReference.cache
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Admin.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.carga_primeravez.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.listado_huellas.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Main_Menu.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Properties.Resources.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Select_mano.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Utilidades.verifica_mancomuna.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.Verificacion.resources
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.GenerateResource.cache
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.CoreCompileInputs.cache
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
+E:\bd hdd\PINALEJO2024-09-17\PINALEJO ANTIGUA CON METODOS\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe.config
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DDigital.exe
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DDigital.pdb
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPXUru.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Buffers.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Memory.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Text.Json.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.ValueTuple.dll
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPCtlUruNet.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPCtlXUru.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPUruNet.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\DPXUru.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Buffers.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Memory.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Text.Json.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\bin\Debug\System.ValueTuple.xml
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.AssemblyReference.cache
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.Admin.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.carga_primeravez.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.listado_huellas.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.Main_Menu.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.Properties.Resources.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.Select_mano.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.Utilidades.verifica_mancomuna.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.Verificacion.resources
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.GenerateResource.cache
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.CoreCompileInputs.cache
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
+C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb

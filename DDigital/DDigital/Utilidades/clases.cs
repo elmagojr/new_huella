@@ -49,6 +49,7 @@ namespace DDigital.Utilidades
     {
         public string HistoId { get; set; }
         public string HistoTabla { get; set; }
+        public string HistoIdentificador { get; set; }
         public string HistoCampo { get; set; }
         public string HistoVAnterior { get; set; }
         public string HistoVActual { get; set; }

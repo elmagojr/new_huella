@@ -115,8 +115,8 @@ namespace DDigital.Interfaz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Los  Roles no han sido firmados debidamente para esta instancia", "FALLO VALIDACIÓN");
-                Application.Exit();
+                MessageBox.Show("El rol no han sido firmado debidamente para esta instancia", "FALLO VALIDACIÓN");
+                //Application.Exit();
                 return null;
             }
         }

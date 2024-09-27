@@ -181,6 +181,7 @@ namespace DDigital
                 {
                     HISTO_HUELLAS BorraHuella = new HISTO_HUELLAS();
                     int rowIndex = row.Index;
+                    BorraHuella.HistoIdentificador = data_huellas.Rows[rowIndex][6].ToString();
                     BorraHuella.HistoId = data_huellas.Rows[rowIndex][6].ToString();
                     BorraHuella.HistoTabla = "HUELLAS_FIGERS";
                     BorraHuella.HistoCampo = "HUELLA";

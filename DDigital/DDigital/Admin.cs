@@ -353,6 +353,10 @@ namespace DDigital
                                 rol.PERMISOS_ROLHUE = tp.ListaPermisos;
                                 ActivarChecked(tp.ListaPermisos, checkedListBox1);
                             }
+                            else
+                            {
+                                ActivarChecked("", checkedListBox1);
+                            }
 
                             // permisos_ = secu.PERMISOS(rows["permisos_rolhue"].ToString(), out tp);
                         }
@@ -656,7 +660,7 @@ namespace DDigital
                 }
 
 
-
+                rol_add.USR_AGREGO_ROLHUE = _CRED.usr_logged;
                 int afecctedRows = wf.registraAcceso(token_pay, rol_add, 4);
 
                 if (afecctedRows > 0)
