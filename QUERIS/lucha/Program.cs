@@ -28,7 +28,7 @@ class Program
                         Console.WriteLine($"Ejecutando archivo: {Path.GetFileName(archivo)}");
 
                         // Configura el proceso para ejecutar dbisql
-                        Process process = new Process();
+                        Process process = new();
                         process.StartInfo.FileName = @"C:\Program Files\SQL Anywhere 12\Bin32\dbisql.exe"; // Ruta al ejecutable de dbisql
                         process.StartInfo.Arguments = $"-c \"DSN=SISC\" \"{archivo}\""; // Parámetros del comando, incluyendo la ruta del archivo .sql
                         process.StartInfo.RedirectStandardOutput = true; // Redirige la salida si quieres capturarla

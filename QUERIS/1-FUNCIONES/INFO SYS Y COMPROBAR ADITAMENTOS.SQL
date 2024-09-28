@@ -64,13 +64,15 @@ RETURNS NUMERIC(1,0)
 DETERMINISTIC
 BEGIN
 	DECLARE "comprovado" NUMERIC(1,0);
-	IF EXISTS (select * from sys.SYSTABLE where table_name =gg ) THEN 
+	IF EXISTS (select * from sys.SYSTABLE where table_name =@string_nombre_objeto ) THEN 
        set comprovado = 1;
-    elseIF EXISTS (select * from sys.SYSUSER where user_name =gg ) THEN
+    elseIF EXISTS (select * from sys.SYSUSER where user_name =@string_nombre_objeto ) THEN
         set comprovado = 1;
-    elseif EXISTS (select * from sys.SYSPROCEDURE where proc_name =gg ) THEN
+    elseif EXISTS (select * from sys.SYSPROCEDURE where proc_name =@string_nombre_objeto ) THEN
      set comprovado = 1;
-    elseif EXISTS (select *  from sys.SYSTRIGGERS where trigname =gg ) THEN
+    elseif EXISTS (select *  from sys.SYSTRIGGERS where trigname =@string_nombre_objeto ) THEN
+        set comprovado = 1;
+    elseif EXISTS (select * from dba.PARAMETROS_X_EMPRESA where PA_ABREV_PARAMETRO =@string_nombre_objeto ) THEN
         set comprovado = 1;
     else
         set comprovado = 0;
@@ -79,3 +81,4 @@ BEGIN
 	RETURN "comprovado";
 END;
 COMMENT ON PROCEDURE "DBA"."comprobar_aditamentos" IS 'esta funcion sirve para determinar que un objetos en la base de datos exista';
+

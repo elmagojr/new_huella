@@ -27,7 +27,7 @@ namespace DDigital
 {
     public partial class Main_Menu : Form
     {
-        work_flow wf; 
+        work_flow wf;
         public CREDENCIALES CRED_;
         Bitmap ultima_imagen_huella;
         public Reader _reader;
@@ -45,13 +45,13 @@ namespace DDigital
         public PERMISOS PERMISSIONS_;
 
 
-        public int primera_vez = Properties.Settings.Default.primerVez;
+
 
 
 
         #region METODOS PARA PERMISOS   
 
-      
+
         public void AplicarPermisos(Form formulario, PERMISOS _permisos)
         {
             foreach (Control control in formulario.Controls)
@@ -66,9 +66,9 @@ namespace DDigital
                             break;
                         case "tabControlSelectMano":
                             // control.Enabled = _permisos.SeleccionarMano;                        
-                                PermisosTabspages(tabcontrol, _permisos);
+                            PermisosTabspages(tabcontrol, _permisos);
                             break;
-                    
+
                         default:
                             break;
                     }
@@ -78,10 +78,10 @@ namespace DDigital
                 {
                     switch (control.Name)
                     {
-                        case "ch_activarManoI":                           
+                        case "ch_activarManoI":
                         case "ch_activarManoD":
                             control.Enabled = _permisos.SeleccionarMano;
-                            break;                    
+                            break;
                         default:
                             break;
                     }
@@ -109,7 +109,7 @@ namespace DDigital
                         case "BTN_CAMBIAR_ACCESO":
                             //control.Enabled = _permisos.QuitarAccesoUsr;
                             break;
-                               
+
                         default:
                             break;
                     }
@@ -123,9 +123,9 @@ namespace DDigital
                 {
                     foreach (ToolStripMenuItem item in menuStrip.Items)
                     {
-                       PermisosMenus(item,_permisos);
+                        PermisosMenus(item, _permisos);
                     }
-                  
+
                 }
 
             }
@@ -147,7 +147,7 @@ namespace DDigital
                         menu.Enabled = false;
                     }
 
-              
+
                     break;
                 default:
                     break;
@@ -167,27 +167,27 @@ namespace DDigital
                     case "tabPage1":
                     case "tabPage2":
                         foreach (Control controlPage in tabpage.Controls)
-                        {                            
-                                if (controlPage is CheckBox)
+                        {
+                            if (controlPage is CheckBox)
+                            {
+                                switch (controlPage.Name)
                                 {
-                                    switch (controlPage.Name)
-                                    {
-                                        case "cd1":
-                                        case "cd2":
-                                        case "cd3":
-                                        case "cd4":
-                                        case "cd5":
-                                        case "ci1":
-                                        case "ci2":
-                                        case "ci3":
-                                        case "ci4":
-                                        case "ci5":
-                                            controlPage.Enabled = perms.SeleccionarDedos;
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }                            
+                                    case "cd1":
+                                    case "cd2":
+                                    case "cd3":
+                                    case "cd4":
+                                    case "cd5":
+                                    case "ci1":
+                                    case "ci2":
+                                    case "ci3":
+                                    case "ci4":
+                                    case "ci5":
+                                        controlPage.Enabled = perms.SeleccionarDedos;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
                         }
                         break;
                     default:
@@ -196,7 +196,7 @@ namespace DDigital
             }
 
 
-              
+
         }
 
         #endregion
@@ -207,7 +207,7 @@ namespace DDigital
         public bool InitializeReader()
         {
             _reader = ReaderCollection.GetReaders()[0]; // Obtén el primer lector disponible
-            if (_reader!= null)
+            if (_reader != null)
             {
                 Constants.ResultCode resultCode = _reader.Open(Constants.CapturePriority.DP_PRIORITY_COOPERATIVE);
 
@@ -224,7 +224,7 @@ namespace DDigital
                 MessageBox.Show("No hay lector conectado");
                 return false;
             }
-           
+
         }
 
 
@@ -244,7 +244,7 @@ namespace DDigital
                 ctrl.Enabled = false;
             }
 
-            List<Control> checks = new List<Control> { PI1, PI2, PI3, PI4, PI5,PD1,PD2,PD3,PD4,PD5 };
+            List<Control> checks = new List<Control> { PI1, PI2, PI3, PI4, PI5, PD1, PD2, PD3, PD4, PD5 };
 
             foreach (Control ctrl in checks)
             {
@@ -256,12 +256,12 @@ namespace DDigital
             List<string> list = new List<string>();
             //para desactivar los que no estan permitidos
             list = wf.Deshabilitar_Checks();
-            
+
 
             string dedo_select = list[0];
-            if (dedo_select =="I" | dedo_select == "DI")
+            if (dedo_select == "I" | dedo_select == "DI")
             {
-                
+
                 if (list.Contains("DI1"))
                 {
                     p_10.Visible = false;
@@ -287,7 +287,7 @@ namespace DDigital
                     p_6.Visible = false;
                     radio_I5.Enabled = true;
                 }
-            } 
+            }
 
 
 
@@ -299,8 +299,8 @@ namespace DDigital
                 //tabControl1.SelectedTab = tabPage2;
                 if (list.Contains("DD1"))
                 {
-                    p_1.Visible = false;      
-                    radio_D1.Enabled = true; 
+                    p_1.Visible = false;
+                    radio_D1.Enabled = true;
                 }
                 if (list.Contains("DD2"))
                 {
@@ -389,7 +389,7 @@ namespace DDigital
                     }
                 }
             }
-            
+
 
 
             return conteo;
@@ -425,12 +425,12 @@ namespace DDigital
         }
         public bool OpenReader()
         {
-            UT = new UTILIDADES();  
+            UT = new UTILIDADES();
             //_reader = new Reader();
             _reader = ReaderCollection.GetReaders()[0];
 
-            
-            if (_reader==null)
+
+            if (_reader == null)
             {
                 MessageBox.Show(UT.HAS_ERROS("LE00001"));
                 Task.Run(() => CancelarEnrrol());
@@ -443,7 +443,7 @@ namespace DDigital
 
                 // Open reader
                 result = _reader.Open(Constants.CapturePriority.DP_PRIORITY_COOPERATIVE);
-          
+
                 if (result != Constants.ResultCode.DP_SUCCESS)
                 {
                     MessageBox.Show(UT.HAS_ERROS("LE00001") + result);
@@ -489,7 +489,7 @@ namespace DDigital
                     // Dispose of reader handle and unhook reader events.
                     //Task.Run(()=> _reader.Dispose())  ;
                     _reader.Dispose();
-                     count = 0;
+                    count = 0;
                     _reader = null;
                     //if (reset)
                     //{
@@ -533,7 +533,7 @@ namespace DDigital
                     {
                         //CancelarEnrrol();
                         //Task.Run(() => CancelarEnrrol());
-                  
+
                         while (!EstadoLector())
                         {
                             _reader.Dispose();
@@ -546,8 +546,8 @@ namespace DDigital
                         bool activa_cancel = this.OpenReader();
                         if (activa_cancel)
                         {
-                         
-                            this.StartCaptureAsync(this.OnCaptured);                      
+
+                            this.StartCaptureAsync(this.OnCaptured);
                         }
                         //this.Invoke(new Action(() =>
                         //{
@@ -589,16 +589,16 @@ namespace DDigital
                     label1.Text = "Escaneado " + count + " de 4 muestras";
                     label1.ForeColor = Color.Black;
                 }
-              
+
             }
             else
             {
                 CancelCaptureAndCloseReader(this.OnCaptured);
             }
-           
-       
+
+
         }
-            
+
         public bool EstadoLector()
         {
             UT = new UTILIDADES();
@@ -609,7 +609,7 @@ namespace DDigital
                 {
                     lbl_estado.Text = "Lector Desconectado";
                 }));
-            
+
                 return false;
             }
             else
@@ -618,27 +618,27 @@ namespace DDigital
                 {
                     lbl_estado.Text = "Lector conectado";
                 }));
-           
+
                 return true;
-            }            
+            }
         }
-      
-        public void OnCaptured(CaptureResult captureResult) 
+
+        public void OnCaptured(CaptureResult captureResult)
         {
-           
+
             if (this.InvokeRequired)
             {
                 this.Invoke(new Action(() =>
-                {                
-                        OnCaptured(captureResult);                   
-                    
+                {
+                    OnCaptured(captureResult);
+
                 }));
                 return;
             }
-           
+
             UTILIDADES UT = new UTILIDADES();
             try
-                {
+            {
                 // Check capture quality and throw an error if bad.
                 if (!this.CheckCaptureResult(captureResult)) return;
 
@@ -647,76 +647,78 @@ namespace DDigital
                 label1.Text = "Escaneado " + count + " de 4 muestras";
                 label1.ForeColor = Color.Black;
                 DataResult<Fmd> resultConversion = FeatureExtraction.CreateFmdFromFid(captureResult.Data, Constants.Formats.Fmd.ANSI);
-            
-        
+
+
 
                 //firstFinger = resultConversion.Data;
 
                 foreach (Fid.Fiv fiv in captureResult.Data.Views)
-                {          
-                   ultima_imagen_huella  =  UT.CreateBitmap(fiv.RawImage, fiv.Width, fiv.Height);
+                {
+                    ultima_imagen_huella = UT.CreateBitmap(fiv.RawImage, fiv.Width, fiv.Height);
                     pic_huella.Image = ultima_imagen_huella;
                 }
- 
+
 
                 if (resultConversion.ResultCode != Constants.ResultCode.DP_SUCCESS)
                 {
                     //this.Reset = true;
                     throw new Exception(resultConversion.ResultCode.ToString());
                 }
-               // verifica2();
-                bool existe =  VerificarExistenciaHuella(resultConversion.Data);
+                // verifica2();
+                bool existe = VerificarExistenciaHuella(resultConversion.Data);
                 if (existe)
-                {                   
+                {
 
-                        Task.Run(() =>
+                    Task.Run(() =>
+                    {
+                        this.Invoke((MethodInvoker)delegate
                         {
-                            this.Invoke((MethodInvoker)delegate
-                            {
-                                MessageBox.Show(UT.HAS_ERROS("HD00001"), "Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            });
+                            MessageBox.Show(UT.HAS_ERROS("HD00001"), "Existente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         });
-                        Task.Run(() => _reader.CancelCapture());
+                    });
+                    Task.Run(() => _reader.CancelCapture());
                     //Task.Run(() => CancelarEnrrol());
-                
+
 
                 }
 
                 preenrollmentFmds.Add(resultConversion.Data);
-                
-                
+
+
                 if (count == 4)
                 {
                     label1.Text = "Escaneado " + count + " de 4 muestras";
                     DataResult<Fmd> resultEnrollment = DPUruNet.Enrollment.CreateEnrollmentFmd(Constants.Formats.Fmd.ANSI, preenrollmentFmds);
 
-                   
+
                     if (resultEnrollment.ResultCode == Constants.ResultCode.DP_SUCCESS)
                     {
                         //MessageBox.Show("Registro exitoso "+mano_.QUE_DEDO + mano_.QUE_MANO);         
-                        preenrollmentFmds.Clear();                       
+                        preenrollmentFmds.Clear();
                         label1.Text = "Escaneado " + count + " de 4 muestras";
                         label1.ForeColor = Color.DarkGreen;
                         count = 0;
-                        
 
-                       // btn_cancel_enrol.Visible = false;
+
+                        // btn_cancel_enrol.Visible = false;
 
                         fmd_Registro = resultEnrollment.Data;
                         btn_registrar.Enabled = true;
                         txt_observacion.Enabled = true;
-                       
+
                         Task.Run(() => CancelCaptureAndCloseReader(this.OnCaptured));
                         return;
                     }
                     else if (resultEnrollment.ResultCode == Constants.ResultCode.DP_ENROLLMENT_INVALID_SET)
                     {
-                     
-                        MessageBox.Show("Todas las huellas escaneadas no coiciden. Intente de nuevo.","Aviso", MessageBoxButtons.OK,MessageBoxIcon.Hand);
+
+                        //MessageBox.Show("Todas las huellas escaneadas no coiciden. Intente de nuevo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        label1.Text = "Todas las huellas escaneadas no coiciden. Intente de nuevo.";
                         preenrollmentFmds.Clear();
                         count = 0;
                         label1.Text = "Escaneado " + count + " de 4 muestras";
                         label1.ForeColor = Color.Black;
+                        Task.Run(() => CancelCaptureAndCloseReader(this.OnCaptured));
                         return;
                     }
                     else if (resultEnrollment.ResultCode == Constants.ResultCode.DP_ENROLLMENT_NOT_READY)
@@ -727,15 +729,15 @@ namespace DDigital
                     }
 
                 }
-    
+
             }
             catch (Exception ex)
             {
-               // CancelCaptureAndCloseReader(this.OnCaptured);
+                // CancelCaptureAndCloseReader(this.OnCaptured);
                 Task.Run(() => _reader.Dispose());
                 Task.Run(() => _reader.CancelCapture());
                 //CancelarEnrrol();
-                MessageBox.Show(ex.Message.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             //finally { Task.Run(() => CancelarEnrrol()); _HUELLA = null; }
@@ -745,7 +747,7 @@ namespace DDigital
         private HUELLA ObtenerHuella(Fmd data_fmd, Bitmap IMG)
         {
             UT = new UTILIDADES();
-                 string x = Fmd.SerializeXml(data_fmd);
+            string x = Fmd.SerializeXml(data_fmd);
             byte[] tobytes = Encoding.UTF8.GetBytes(x);
 
             byte[] jpg_bytes = UT.ConveritirBitmap_tojpeg(IMG);
@@ -755,7 +757,7 @@ namespace DDigital
             nueva_huella._USR_AGREGO = CRED_.usr_logged;
             DATA_PERSONA DP = new DATA_PERSONA();
             work_flow wf = new work_flow();
-        
+
             DP = wf.InformacionVerificacion(CRED_.identidad, 1);
 
             nueva_huella._HUE_CODIGO = CRED_.codigo;
@@ -764,7 +766,7 @@ namespace DDigital
             nueva_huella._HUELLA = tobytes;
             nueva_huella._HUE_COMPANIA = CRED_.cia;
             nueva_huella._HUE_OBSERVACION = txt_observacion.Text;
-            nueva_huella._DEDO = mano_.QUE_MANO+mano_.QUE_DEDO ;
+            nueva_huella._DEDO = mano_.QUE_MANO + mano_.QUE_DEDO;
             nueva_huella._HUELLA_SAMPLE = jpg_bytes;
 
             return nueva_huella;
@@ -773,16 +775,16 @@ namespace DDigital
 
         private const int PROBABILITY_ONE = 0x7fffffff;
 
-       // int count = 0;
+        // int count = 0;
         DataResult<Fmd> resultEnrollment;
         //List<Fmd> preenrollmentFmds;
-        
-        public bool VerificarExistenciaHuella(Fmd fmd1) 
+
+        public bool VerificarExistenciaHuella(Fmd fmd1)
         {
-           
-           work_flow wf = new work_flow();
-           return wf.verificacion_huella(fmd1, out _HUELLA);
-        
+
+            work_flow wf = new work_flow();
+            return wf.verificacion_huella(fmd1, out _HUELLA);
+
         }
         private void CancelarEnrrol()
         {
@@ -823,11 +825,11 @@ namespace DDigital
         public Main_Menu()
         {
             InitializeComponent();
-           
+
         }
         public void TieneAcceso(string acceso)
         {
-           
+
 
             if (acceso == "NO")
             {
@@ -835,7 +837,7 @@ namespace DDigital
                 this.Close();
                 Application.Exit();
                 return;
-            } 
+            }
         }
         private void Main_Menu_Load(object sender, EventArgs e)
         {
@@ -846,44 +848,45 @@ namespace DDigital
             PERMISSIONS_ = new PERMISOS();
             CRED_ = UT.LEER_CREDENCIALES();
             PERMISSIONS_ = secu.ObtenerPermisos(CRED_.usr_logged);
+            int primera_vez = Properties.Settings.Default.primerVez;
             if (CRED_.usr_logged.ToUpper() == "HID")
             {
-              PERMISSIONS_ =  UT.permisosSuperUS;
+                PERMISSIONS_ = UT.permisosSuperUS;
             }
             if (primera_vez == 0 && CRED_.usr_logged.ToUpper() == "HID") //primera configuracion O EL HID o el alguien con privilegios?
             {
                 PrimeraVez();
             }
-       
+
 
             TieneAcceso(PERMISSIONS_.Tiene_acceso);
 
-            if (PERMISSIONS_!=null)
+            if (PERMISSIONS_ != null)
             {
 
                 AplicarPermisos(this, PERMISSIONS_);
             }
-            
+
 
 
             INFORMACION_SYSTEM = secu.trae_info_sistema();//INFORMACION DE LA PC LOCAL
             timer1.Start();
             lbl_mano.Text = tabControl1.SelectedTab.Text;
- 
-           
-         
+
+
+
             try
             {
-                if (CRED_!=null)
+                if (CRED_ != null)
                 {
                     d_persona = wf.InformacionVerificacion(CRED_.identidad, 1);
                 }
                 else
                 {
                     MessageBox.Show("ERROR IO0002: " + UT.HAS_ERROS("IO0002"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                   Application.Exit();
+                    Application.Exit();
                 }
-                if (d_persona.ESTADO!="0" && CRED_.cta != "ver")
+                if (d_persona.ESTADO != "0" && CRED_.cta != "ver")
                 {
                     MessageBox.Show("El afiliado que intenta registrar NO está Activo. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Application.Exit();
@@ -901,9 +904,9 @@ namespace DDigital
                 if (CRED_ != null)
                 {
                     int CONTEO_HUELLAS = 0;
-                   
-                        DeshabilitarRadios(CRED_.identidad);
-                  
+
+                    DeshabilitarRadios(CRED_.identidad);
+
                     lbl_count_hue.Text = CONTEO_HUELLAS.ToString();
                     switch (CRED_.fromAction)
                     {
@@ -932,8 +935,8 @@ namespace DDigital
                                 listadoDeHuellasToolStripMenuItem.Enabled = false;
                                 tabControl1.Enabled = false;
                                 button1.Enabled = false;
-                            }                           
-                         
+                            }
+
                             break;
                         default:
                             break;
@@ -950,32 +953,35 @@ namespace DDigital
             catch (Exception ex)
             {
 
-                MessageBox.Show( ex.Message);
+                MessageBox.Show(ex.Message);
                 Application.Exit();
                 return;
             }
 
-           
 
-         
+
+
 
 
         }
         private void PrimeraVez()
         {
-            
+
             carga_primeravez cpv = new carga_primeravez();
             cpv.ShowDialog();
+            int valida = cpv.valida_comprobacion;
             cpv.Dispose();
 
 
-            Admin admin = new Admin();
-            admin._sender = this;
-            admin.ShowDialog();
-            admin.Dispose();
-            admin = null;
+            if (valida==1)
+            {
+                Admin admin = new Admin();
+                admin._sender = this;
+                admin.ShowDialog();
+                admin.Dispose();
+                admin = null;
 
-            
+
                 Select_mano select_Mano = new Select_mano();
                 select_Mano._sender = this;
                 select_Mano.ShowDialog();
@@ -984,6 +990,15 @@ namespace DDigital
 
                 Properties.Settings.Default.primerVez = 1;
                 Properties.Settings.Default.Save();
+
+            }
+            else
+            {
+                this.Close();
+            }
+          
+
+              
              
           
            

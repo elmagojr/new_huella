@@ -538,11 +538,11 @@ namespace DDigital.Interfaz
                 };
             if (nombre_objeto == "comprobar_aditamentos")
             {
-                return cn.EjecutarParametrizada(sql.FuntioncomprobarObjeto, parametros);
+                return cn.CountSelect(sql.FuntioncomprobarObjeto, parametros);
             }
             else
             {  
-                return cn.EjecutarParametrizada(sql.comprobarObjeto, parametros);
+                return cn.CountSelect(sql.comprobarObjeto, parametros);
             }        
 
         }

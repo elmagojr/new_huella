@@ -772,7 +772,8 @@ namespace DDigital
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (_sender.primera_vez == 0 && _CRED.usr_logged.ToUpper() == "HID")
+            int primera_vez = Properties.Settings.Default.primerVez;
+            if (primera_vez == 0 && _CRED.usr_logged.ToUpper() == "HID")
             {
                 DialogResult result = MessageBox.Show("Primera vez: ¿Cerrar esta ventana de Administración?", "Primera Configuración", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
