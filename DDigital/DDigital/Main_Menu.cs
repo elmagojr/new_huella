@@ -847,6 +847,7 @@ namespace DDigital
             d_persona = new DATA_PERSONA();
             PERMISSIONS_ = new PERMISOS();
             CRED_ = UT.LEER_CREDENCIALES();
+            
             PERMISSIONS_ = secu.ObtenerPermisos(CRED_.usr_logged);
             int primera_vez = Properties.Settings.Default.primerVez;
             if (CRED_.usr_logged.ToUpper() == "HID")
@@ -863,9 +864,9 @@ namespace DDigital
 
             if (PERMISSIONS_ != null)
             {
-
                 AplicarPermisos(this, PERMISSIONS_);
             }
+
 
 
 
@@ -930,8 +931,12 @@ namespace DDigital
 
                             break;
                         case "0":
-                            if (CRED_.nombre == "conf")
+                            if (CRED_.nombre == "conf" && CRED_.identidad=="0")
                             {
+                                resetPrimeraVezToolStripMenuItem.Visible=true;
+                                PERMISSIONS_.RegistrarHuellas=false;
+                                PERMISSIONS_.VerificarHuellas=false;
+                                PERMISSIONS_.VerHuellas=false;
                                 listadoDeHuellasToolStripMenuItem.Enabled = false;
                                 tabControl1.Enabled = false;
                                 button1.Enabled = false;
@@ -1186,6 +1191,17 @@ namespace DDigital
             {
                 Security secu   = new Security();
                 PERMISSIONS_ = secu.ObtenerPermisos(CRED_.usr_logged);
+
+                if (CRED_.nombre == "conf" && CRED_.identidad == "0")
+                {
+                    PERMISSIONS_.RegistrarHuellas = false;
+                    PERMISSIONS_.VerificarHuellas = false;
+                    PERMISSIONS_.VerHuellas = false;
+                    listadoDeHuellasToolStripMenuItem.Enabled = false;
+                    tabControl1.Enabled = false;
+                    button1.Enabled = false;
+                }
+
                 if (CRED_.usr_logged.ToUpper() == "HID")
                 {
                     PERMISSIONS_ = UT.permisosSuperUS;
