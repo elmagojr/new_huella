@@ -16,7 +16,7 @@ namespace ProyectoDIGITALPERSONA
         public readonly string connectionString;
         OdbcConnection db_con;
         private string UID = "HID";
-        private string PWD = "hid@123456";
+        private string PWD = "DE44EAE255516A0E0AD4901D8691A0F2850548FFC8AFD519AA84833E45F6018A";
         UTILIDADES UT = new UTILIDADES();
         
         public ODBC_CONN() {

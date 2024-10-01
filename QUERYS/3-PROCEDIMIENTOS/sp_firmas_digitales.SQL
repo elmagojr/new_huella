@@ -7,7 +7,7 @@ in p_firma long binary
 /* RESULT( column_name column_type, ... ) */
 BEGIN
 if p_tipo = 0 then --en caso de que sea la primera firma
-    if not exists  (select * from dba.firmas_ahorro_copia where codigo_cta_aho = p_codigo_cta) then
+    if not exists  (select * from dba.firmas_ahorro where codigo_cta_aho = p_codigo_cta) then
         insert into dba.firmas_ahorro_copia (codigo_cta_aho,Codigo_COMPANIA,Firma1_aho) values (p_codigo_cta, p_compania, p_firma);
     else 
      raiserror 17000 'Esta cuenta ya tiene firma registrada';
@@ -15,16 +15,16 @@ if p_tipo = 0 then --en caso de que sea la primera firma
 end if;
 
 if p_tipo = 1 then
-    update dba.firmas_ahorro_copia set Firma1_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
+    update dba.firmas_ahorro set Firma1_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
 end if;
 if p_tipo = 2 then
-    update dba.firmas_ahorro_copia set Firma2_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
+    update dba.firmas_ahorro set Firma2_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
 end if;
 if p_tipo = 3 then
-    update dba.firmas_ahorro_copia set Firma3_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
+    update dba.firmas_ahorro set Firma3_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
 end if;
 if p_tipo = 4 then
-    update dba.firmas_ahorro_copia set Firma4_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
+    update dba.firmas_ahorro set Firma4_aho =p_firma  where codigo_cta_aho = p_codigo_cta;
 end if;
 	/* Type the procedure statements here */
 END;

@@ -301,6 +301,7 @@ namespace DDigital.Interfaz
             itemBorra.HistoVAnterior = "(NO_DATA)";
             itemBorra.HistoAccion = "D";
             itemBorra.HistoIdentificador = itemBorra.HistoId;
+           // itemBorra.HistoCampo = "HUELLA";
             Dictionary<string, object> DelPar = new Dictionary<string, object>()
             {
                 {"@id",itemBorra.HistoId}
@@ -309,8 +310,8 @@ namespace DDigital.Interfaz
             {
                 
                 {"@HISTO_TABLA",itemBorra.HistoTabla},
-                {"@HISTO_CAMPO",itemBorra.HistoCampo},
                 {"@HISTO_IDENTIFICADO",itemBorra.HistoIdentificador},
+                {"@HISTO_CAMPO",itemBorra.HistoCampo},              
                 {"@HISTO_VANTERIOR",itemBorra.HistoVAnterior},
                 {"@HISTO_VACTUAL",itemBorra.HistoVActual},
                 {"@HISTO_ACCION",itemBorra.HistoAccion},

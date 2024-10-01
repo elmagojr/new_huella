@@ -21,5 +21,5 @@ INSERT INTO "DBA"."Permisos" ("PME_USUARIO","PME_MENU","PME_FORMATO","PME_NUMERO
 VALUES('HID','M_Parametros','Generales del sistema',1,CURRENT USER,current date,'',NULL,NULL,1,1)
 
 INSERT INTO "DBA"."Permisos" ("PME_USUARIO","PME_MENU","PME_FORMATO","PME_NUMERO","PME_AGREGO","PME_FECHA_AGR","PME_MODIFICO","PME_FECHA_MOD","PME_SECUENCIA","PME_FILIAL","PME_COMPANIA") 
-VALUES('HID','M_Parametros','&Par‡metros',0,CURRENT USER,current date,'',NULL,NULL,1,1)
+VALUES('HID','M_Parametros','&Parámetros',0,CURRENT USER,current date,'',NULL,NULL,1,1)
 

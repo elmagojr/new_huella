@@ -141,7 +141,7 @@ if(ExisteCampo>0) then
         fetch next Inserta_Bitacora into Campo;
     
         if(@@sqlstatus = 2) then
-          print "No se encontró ningun Registro";
+          print "No se encontrÃ³ ningun Registro";
           close Inserta_Bitacora;
           return
         end if;
@@ -161,8 +161,8 @@ if(ExisteCampo>0) then
                 end if;
             
 
-                INSERT INTO "DBA"."HISTO_HUELLAS" ("HISTO_TABLA","HISTO_CAMPO","HISTO_VANTERIOR","HISTO_VACTUAL","HISTO_ACCION","HISTO_USR_ACCION","HISTO_FECHA_ACCION","HISTO_INFO_ADICIONAL","HISTO_OBSERVACION")
-                VALUES('ROL_HUELLA',Campo,Valor_Anterior,Valor_Nuevo,'U',current user,CURRENT TIMESTAMP ,(SELECT "DBA"."func_trae_info_sys"(3)),observacion);
+                INSERT INTO "DBA"."HISTO_HUELLAS" ("HISTO_TABLA","HISTO_IDENTIFICADOR","HISTO_CAMPO","HISTO_VANTERIOR","HISTO_VACTUAL","HISTO_ACCION","HISTO_USR_ACCION","HISTO_FECHA_ACCION","HISTO_INFO_ADICIONAL","HISTO_OBSERVACION")
+                VALUES('ROL_HUELLA',old_name.ID_ROLHUE,Campo,Valor_Anterior,Valor_Nuevo,'U',current user,CURRENT TIMESTAMP ,(SELECT "DBA"."func_trae_info_sys"(3)),observacion);
         end if;
     END IF;
          fetch next Inserta_Bitacora into Campo;

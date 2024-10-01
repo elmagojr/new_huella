@@ -74,3 +74,33 @@ C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Release\DDigital.csproj.
 C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Release\DDigital.csproj.Up2Date
 C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Release\DDigital.exe
 C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Release\DDigital.pdb
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.Abstractions.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.Logging.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.Tokens.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Buffers.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.IdentityModel.Tokens.Jwt.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Memory.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Numerics.Vectors.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Text.Encodings.Web.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Text.Json.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Threading.Tasks.Extensions.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.ValueTuple.dll
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.Bcl.AsyncInterfaces.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.Abstractions.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.Logging.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Microsoft.IdentityModel.Tokens.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Buffers.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.IdentityModel.Tokens.Jwt.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Memory.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Numerics.Vectors.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Text.Encodings.Web.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Text.Json.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.Threading.Tasks.Extensions.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.ValueTuple.xml
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Release\DDigital.Admin.resources
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Release\DDigital.carga_primeravez.resources

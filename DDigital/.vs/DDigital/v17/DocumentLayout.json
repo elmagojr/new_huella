@@ -1,48 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\",
+  "WorkspaceRootPath": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|c:\\users\\roken\\desktop\\new_huella\\ddigital\\ddigital\\main_menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\main_menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|d:\\desarollo\\firmas y huella\\huella\\new_huella\\ddigital\\ddigital\\utilidades\\odbc_conn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\utilidades\\odbc_conn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\verificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\verificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\verificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\verificacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\main_menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\main_menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\interfaz\\work_flow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\interfaz\\work_flow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|DDigital||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\carga_primeravez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\carga_primeravez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\carga_primeravez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\carga_primeravez.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\ddigital\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\utilidades\\queries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|d:\\desarollo\\firmas y huella\\huella\\new_huella\\ddigital\\ddigital\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\ddigital\\utilidades\\queries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\utilidades\\queries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\ddigital\\utilidades\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\ddigital\\utilidades\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{13FAF532-12D0-4798-A26F-2AB97FDE0C02}|DDigital\\DDigital.csproj|solutionrelative:ddigital\\utilidades\\clases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -53,111 +30,53 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Verificacion.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Verificacion.cs",
-              "RelativeDocumentMoniker": "DDigital\\Verificacion.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Verificacion.cs",
-              "RelativeToolTip": "DDigital\\Verificacion.cs",
-              "ViewState": "AgIAACsBAAAAAAAAAAA6wEUBAAAQAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ODBC_CONN.cs",
+              "DocumentMoniker": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Utilidades\\ODBC_CONN.cs",
+              "RelativeDocumentMoniker": "DDigital\\Utilidades\\ODBC_CONN.cs",
+              "ToolTip": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Utilidades\\ODBC_CONN.cs",
+              "RelativeToolTip": "DDigital\\Utilidades\\ODBC_CONN.cs",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAowJoAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T19:37:03.476Z",
+              "WhenOpened": "2024-10-01T20:34:34.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Verificacion.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Verificacion.cs",
-              "RelativeDocumentMoniker": "DDigital\\Verificacion.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Verificacion.cs [Dise\u00F1o]",
-              "RelativeToolTip": "DDigital\\Verificacion.cs [Dise\u00F1o]",
+              "Title": "Admin.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Admin.cs",
+              "RelativeDocumentMoniker": "DDigital\\Admin.cs",
+              "ToolTip": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Admin.cs [Dise\u00F1o]",
+              "RelativeToolTip": "DDigital\\Admin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T19:37:00.997Z",
+              "WhenOpened": "2024-09-30T17:57:08.31Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DDigital",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\DDigital.csproj",
-              "RelativeDocumentMoniker": "DDigital\\DDigital.csproj",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\DDigital.csproj",
-              "RelativeToolTip": "DDigital\\DDigital.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-28T18:31:18.168Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Admin.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Admin.cs",
+              "DocumentMoniker": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Admin.cs",
               "RelativeDocumentMoniker": "DDigital\\Admin.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Admin.cs",
+              "ToolTip": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Admin.cs",
               "RelativeToolTip": "DDigital\\Admin.cs",
-              "ViewState": "AgIAAOcCAAAAAAAAAADgvwcDAABIAAAAAAAAAA==",
+              "ViewState": "AQIAANwAAAAAAAAAAAASwO8AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T17:46:04.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Main_Menu.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Main_Menu.cs",
-              "RelativeDocumentMoniker": "DDigital\\Main_Menu.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Main_Menu.cs",
-              "RelativeToolTip": "DDigital\\Main_Menu.cs",
-              "ViewState": "AgIAAD8DAAAAAAAAAAAUwF0DAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T17:31:01.924Z",
+              "WhenOpened": "2024-09-28T17:46:04.476Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Main_Menu.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Main_Menu.cs",
-              "RelativeDocumentMoniker": "DDigital\\Main_Menu.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Main_Menu.cs [Dise\u00F1o]",
-              "RelativeToolTip": "DDigital\\Main_Menu.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T17:30:59.221Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "work_flow.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Interfaz\\work_flow.cs",
-              "RelativeDocumentMoniker": "DDigital\\Interfaz\\work_flow.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Interfaz\\work_flow.cs",
-              "RelativeToolTip": "DDigital\\Interfaz\\work_flow.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAUwHcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T16:43:00.55Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "carga_primeravez.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\carga_primeravez.cs",
-              "RelativeDocumentMoniker": "DDigital\\carga_primeravez.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\carga_primeravez.cs [Dise\u00F1o]",
-              "RelativeToolTip": "DDigital\\carga_primeravez.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T16:56:15.852Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "clases.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Utilidades\\clases.cs",
+              "DocumentMoniker": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Utilidades\\clases.cs",
               "RelativeDocumentMoniker": "DDigital\\Utilidades\\clases.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Utilidades\\clases.cs",
+              "ToolTip": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Utilidades\\clases.cs",
               "RelativeToolTip": "DDigital\\Utilidades\\clases.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAqwDMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -165,27 +84,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "QUERIES.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Utilidades\\QUERIES.cs",
+              "DocumentMoniker": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Utilidades\\QUERIES.cs",
               "RelativeDocumentMoniker": "DDigital\\Utilidades\\QUERIES.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\Utilidades\\QUERIES.cs",
+              "ToolTip": "D:\\DESAROLLO\\FIRMAS y HUELLA\\HUELLA\\new_huella\\DDigital\\DDigital\\Utilidades\\QUERIES.cs",
               "RelativeToolTip": "DDigital\\Utilidades\\QUERIES.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAQwBwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T16:48:17.468Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "carga_primeravez.cs",
-              "DocumentMoniker": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\carga_primeravez.cs",
-              "RelativeDocumentMoniker": "DDigital\\carga_primeravez.cs",
-              "ToolTip": "C:\\Users\\roken\\Desktop\\new_huella\\DDigital\\DDigital\\carga_primeravez.cs",
-              "RelativeToolTip": "DDigital\\carga_primeravez.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwEcAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-20T15:45:55.665Z"
             }
           ]
         }

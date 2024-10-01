@@ -1101,6 +1101,13 @@ namespace DDigital
 
         private void btn_registrar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_tipo_per.Text)| string.IsNullOrEmpty(txt_identidad.Text))
+            {
+                MessageBox.Show("IO0002 Valores invalidos: " + UT.HAS_ERROS("IO0002"), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Task.Run(() => CancelarEnrrol());
+                return;
+
+            }
             _HUELLA = ObtenerHuella(fmd_Registro, ultima_imagen_huella);
             work_flow wf = new work_flow();
             UT = new UTILIDADES();
