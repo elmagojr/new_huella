@@ -42,6 +42,7 @@ namespace DDigital
         {
             _permisos = _sender.PERMISSIONS_;
             _sender.AplicarPermisos(this, _permisos);
+           // groupbox_adminRol.Enabled = _permisos.AdmonRoles;
 
             token_pay = new Token_Payload();
             secu = new Security();
@@ -120,8 +121,8 @@ namespace DDigital
             listBox1.Enabled = true;
             listBox1.ClearSelected();
             btn_save_roll.Enabled = false;
-            btn_eliminar.Enabled = false;
-            btn_editar.Enabled = false;
+            btn_eliminar_rol.Enabled = false;
+            btn_editar_rol.Enabled = false;
         }
         private void ActivaxSelccion()
         {
@@ -311,6 +312,7 @@ namespace DDigital
                         rol_add.USR_AGREGO_ROLHUE = _CRED.usr_logged;
                         string usuario = token_pay.NOMBRE_USR;
                         token_pay = secu.VerificarToken(rows["permisos_rolhue"].ToString());
+                        
                         token_pay.NOMBRE_USR = usuario;
                         token_pay.ROL = rol_add.ID_ROLHUE;
                         token_pay.ROL = rol_add.ID_ROLHUE;
@@ -361,10 +363,10 @@ namespace DDigital
                             // permisos_ = secu.PERMISOS(rows["permisos_rolhue"].ToString(), out tp);
                         }
                     }
-
+                    groupbox_adminRol.Enabled = _permisos.AdmonRoles;
                     //permisos_ = secu.PERMISOS()
-                    btn_editar.Enabled = true;
-                    btn_eliminar.Enabled = true;
+                    btn_editar_rol.Enabled = true;
+                    btn_eliminar_rol.Enabled = true;
                     txt_nombre_rol.Text = listBox1.SelectedItem.ToString();
                     // txt_nombre_rol.ReadOnly=false;
                     // 
@@ -448,8 +450,8 @@ namespace DDigital
         private void btn_agregar_Click(object sender, EventArgs e)
         {
             button1.Visible = true;
-            btn_editar.Enabled = false;
-            btn_eliminar.Enabled = false;
+            btn_editar_rol.Enabled = false;
+            btn_eliminar_rol.Enabled = false;
             contro_accion = 1;
             checkedListBox1.Enabled = true;
             listBox1.Enabled = false;
@@ -515,6 +517,7 @@ namespace DDigital
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
+          
             switch (contro_accion)
             {
                 case 1: //guardar nuevo usuario
@@ -707,7 +710,7 @@ namespace DDigital
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            btn_agregar.Enabled = true;
+            btn_agregar_rol.Enabled = true;
             if (radioButton1.Checked && rol_add.ID_ROLHUE != "")
             {
                 token_pay.EsPermitido = "SI";
@@ -717,7 +720,7 @@ namespace DDigital
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            btn_agregar.Enabled = true;
+            btn_agregar_rol.Enabled = true;
             if (radioButton2.Checked && rol_add.ID_ROLHUE != "")
             {
 
@@ -742,7 +745,7 @@ namespace DDigital
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0)//limpia ventana permisos
+            if (tabControl_adminRol.SelectedIndex == 0)//limpia ventana permisos
             {
                 resetVentanaUsr();
             }

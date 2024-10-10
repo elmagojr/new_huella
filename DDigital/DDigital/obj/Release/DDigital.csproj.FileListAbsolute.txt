@@ -104,3 +104,5 @@ D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\Sys
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\bin\Release\System.ValueTuple.xml
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Release\DDigital.Admin.resources
 D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Release\DDigital.carga_primeravez.resources
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Release\DDigital.csproj.SuggestedBindingRedirects.cache
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Release\DDigital.exe.config

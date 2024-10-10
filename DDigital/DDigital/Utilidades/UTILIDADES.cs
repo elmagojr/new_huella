@@ -150,7 +150,7 @@ namespace DDigital.Utilidades
                             }
 
                         }
-                       // File.WriteAllText(path, string.Empty);////quitar que no se borre
+                     //   File.WriteAllText(path, string.Empty);////quitar que no se borre
                     }
 
                     return credencials;

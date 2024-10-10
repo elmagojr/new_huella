@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -247,7 +248,7 @@ namespace DDigital.Utilidades
                 }
                 else //manual
                 {
-                    if (persona_delGrid.TIPO == huella._HUE_TIPO_PER.ToString() && persona_delGrid.TIPO == persona.TIPO.ToString() && persona_delGrid.IDENTIDAD == huella._HUE_IDENTIDAD.ToString() && persona_delGrid.IDENTIDAD == persona.IDENTIDAD.ToString())
+                    if ( persona_delGrid.IDENTIDAD == huella._HUE_IDENTIDAD.ToString() && persona_delGrid.IDENTIDAD == persona.IDENTIDAD.ToString())
                     {
                         if (!listaYaVerificado.Contains(persona.IDENTIDAD))
                         {
@@ -309,22 +310,24 @@ namespace DDigital.Utilidades
             try
             {
                 data_huellas = new DataTable();
-                data_huellas = wf.Listado_mancomunadas(_CRED,3);
+                int sin_huellas = 0;
+                data_huellas = wf.Listado_mancomunadas(_CRED,3, out sin_huellas);
                 if (data_huellas.Rows.Count == 0)
                 {
                     MessageBox.Show("No se encontro datos para esta persona", "NO ENCONTRADO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
+                if (sin_huellas > 0)
+                {
+                    lbl_advertencia.Visible = true;    
+                }
                 dataGridView1.DataSource = data_huellas;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.ClearSelection();
 
-             
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
@@ -357,6 +360,7 @@ namespace DDigital.Utilidades
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            label7.Text = "";
             resetVentana();
             _sender.CancelCaptureAndCloseReader(this.OnCaptured);
             if (!checkBox1.Checked)
@@ -392,15 +396,17 @@ namespace DDigital.Utilidades
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            work_flow wf = new work_flow();
             _sender.CancelCaptureAndCloseReader(this.OnCaptured);
             if (_sender.OpenReader())
             {
                 _sender.StartCaptureAsync(this.OnCaptured);
             }
             persona_delGrid = new DATA_PERSONA();
-                
-            
 
+
+
+            label7.Text = "";
             if (e.RowIndex >= 0)
             {
                
@@ -408,10 +414,21 @@ namespace DDigital.Utilidades
                 {
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     {
+
                         persona_delGrid.NOMBRE=row.Cells[2].Value.ToString();
                         persona_delGrid.CODIGO= row.Cells[1].Value.ToString();
                         persona_delGrid.IDENTIDAD=row.Cells[3].Value.ToString();
                         persona_delGrid.TIPO=row.Cells[0].Value.ToString();
+                        if (wf.NO_Existe_huella(persona_delGrid.IDENTIDAD) == 0)
+                        {
+                            label7.Text = "Esta persona no cuenta con huella.";
+                        }
+                        else
+                        {
+                            label7.Text = "";
+                        }
+                        label7.ForeColor = Color.OrangeRed;
+                        //label7.Text = (wf.NO_Existe_huella(persona_delGrid.IDENTIDAD) > 0) ? "Esta persona no cuenta con huella." : "";
 
                         if (listaYaVerificado.Contains(persona_delGrid.IDENTIDAD))
                         { 
@@ -485,6 +502,11 @@ namespace DDigital.Utilidades
                     this.Close();
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

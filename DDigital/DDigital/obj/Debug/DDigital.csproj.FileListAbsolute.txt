@@ -187,3 +187,5 @@ C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Co
 C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.Up2Date
 C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe
 C:\Users\roken\Desktop\new_huella\DDigital\DDigital\obj\Debug\DDigital.pdb
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.csproj.SuggestedBindingRedirects.cache
+D:\DESAROLLO\FIRMAS y HUELLA\HUELLA\new_huella\DDigital\DDigital\obj\Debug\DDigital.exe.config

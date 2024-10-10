@@ -57,6 +57,68 @@ COMMENT ON PROCEDURE "DBA"."func_trae_info_sys" IS 'esta funcion devuelve un una
 
 
 
+CREATE PROCEDURE "DBA"."sp_firmas_digitales"(
+    in p_tipo varchar(50),
+    in p_codigo_cta varchar(100),
+    in p_compania varchar(50),
+    in obs VARCHAR(200),
+    in p_firma long binary
+)
+BEGIN
+ DECLARE @RowsAffected INT;
+if p_tipo = 0 then --en caso de que sea la primera firma
+    if not exists  (select * from dba.firmas_ahorro where codigo_cta_aho = p_codigo_cta) then
+        insert into dba.firmas_ahorro (codigo_cta_aho,Codigo_COMPANIA,Firma1_aho) values (p_codigo_cta, p_compania, p_firma);
+    else 
+     raiserror 17000 'Esta cuenta ya tiene firma registrada';
+    end if;    
+end if;
+
+        IF p_tipo = 1 THEN
+            if not exists  (select * from dba.firmas_ahorro where codigo_cta_aho = p_codigo_cta) then
+                insert into dba.firmas_ahorro (codigo_cta_aho,Codigo_COMPANIA,Firma1_aho) values (p_codigo_cta, p_compania, p_firma);
+            else 
+                UPDATE dba.firmas_ahorro 
+                SET Firma1_aho = p_firma, observacion = obs 
+                WHERE codigo_cta_aho = p_codigo_cta;
+            end if;          
+        ELSEIF p_tipo = 2 THEN
+            if not exists  (select * from dba.firmas_ahorro where codigo_cta_aho = p_codigo_cta) then
+                insert into dba.firmas_ahorro (codigo_cta_aho,Codigo_COMPANIA,Firma1_aho,Firma2_aho) values (p_codigo_cta, p_compania,'', p_firma);
+            else 
+                UPDATE dba.firmas_ahorro 
+                SET Firma2_aho = p_firma, observacion = obs 
+                WHERE codigo_cta_aho = p_codigo_cta;
+            end if;
+        ELSEIF p_tipo = 3 THEN
+            if not exists  (select * from dba.firmas_ahorro where codigo_cta_aho = p_codigo_cta) then
+                insert into dba.firmas_ahorro (codigo_cta_aho,Codigo_COMPANIA,Firma1_aho,Firma3_aho) values (p_codigo_cta, p_compania,'', p_firma);
+            else 
+                UPDATE dba.firmas_ahorro 
+                SET Firma3_aho = p_firma, observacion = obs 
+                WHERE codigo_cta_aho = p_codigo_cta;
+            end if;
+        ELSEIF p_tipo = 4 THEN
+            if not exists  (select * from dba.firmas_ahorro where codigo_cta_aho = p_codigo_cta) then
+                insert into dba.firmas_ahorro (codigo_cta_aho,Codigo_COMPANIA,Firma1_aho,Firma4_aho) values (p_codigo_cta, p_compania,'', p_firma);
+            else 
+                UPDATE dba.firmas_ahorro 
+                SET Firma4_aho = p_firma, observacion = obs 
+                WHERE codigo_cta_aho = p_codigo_cta;
+            end if;
+        END IF;
+
+        IF p_tipo = 0 THEN
+                 
+            INSERT INTO dba.firmas_ahorro (codigo_cta_aho, Codigo_COMPANIA,CODIGO_FILIAL, Firma1_aho, observacion) 
+            VALUES (p_codigo_cta, p_compania,1 ,p_firma, obs);
+     set @RowsAffected =@@ROWCOUNT;
+    
+
+        END IF;
+
+END;
+
 
 
 CREATE FUNCTION "DBA"."comprobar_aditamentos"( in @string_nombre_objeto varchar(512) )
@@ -81,4 +143,3 @@ BEGIN
 	RETURN "comprovado";
 END;
 COMMENT ON PROCEDURE "DBA"."comprobar_aditamentos" IS 'esta funcion sirve para determinar que un objetos en la base de datos exista';
-

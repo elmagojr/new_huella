@@ -359,7 +359,7 @@ namespace DDigital.Interfaz
 
 
         }
-        public DataTable Listado_mancomunadas(CREDENCIALES _CRED, int tipo_veri)
+        public DataTable Listado_mancomunadas(CREDENCIALES _CRED, int tipo_veri, out int sin_huellas)
         {
             ODBC_CONN CN;           
             sql = new QUERIES();       
@@ -378,10 +378,37 @@ namespace DDigital.Interfaz
                 CN = new ODBC_CONN();
                 dt = CN.EjecutarConsultaSelect(sql.Verificacion_transaccion, parametros_);
             }
+
+            int conta = 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                int eshuel = NO_Existe_huella(item.ItemArray[3].ToString());
+                if (eshuel==0)
+                {
+                    conta++;    
+                }
+            }
+
+
+            sin_huellas = conta;
+
             return dt;
 
 
 
+        }
+
+
+        public int NO_Existe_huella(string identidad)
+        {
+            ODBC_CONN CN;
+            sql = new QUERIES();
+            Dictionary<string, object> parametro_huella = new Dictionary<string, object>()
+            {
+                  {"IDENTIDAD", identidad}
+            };
+            CN = new ODBC_CONN();
+            return CN.CountSelect(sql.existe_en_huellas, parametro_huella);
         }
         public int Verifica_mancomuna(CREDENCIALES _CRED, string identidad, int tipo_veri)
         {

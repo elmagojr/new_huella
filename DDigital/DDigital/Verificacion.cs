@@ -173,7 +173,7 @@ namespace DDigital
                     {
                         this.Invoke((Action)(() =>
                         {
-                            btn_confirmar.Enabled = true;
+                            btn_confirmar.Enabled = _permisos.VerificarHuellas;
                         }));
                     }
 
@@ -272,7 +272,7 @@ namespace DDigital
                     {
                         //para personas autorizadas
                         ESTADO = wf.Verifica_firmas(huella, _CRED, 1);
-                        var mensaje = ESTADO == 1 ? "La huella pertenece a una persona autorizada" : "La huella NO coincide como persona autorizada";
+                        var mensaje = ESTADO == 1 ? "La huella pertenece a una firma autorizada" : "La huella NO coincide como persona o firma autorizada";
                         var colorTexto = ESTADO == 1 ? Color.Green : Color.Red;
                         lbl_principal.Invoke(new Action(() => lbl_principal.Text = mensaje));
                         lbl_principal.Invoke(new Action(() => lbl_principal.ForeColor = colorTexto));
@@ -291,7 +291,7 @@ namespace DDigital
                     // pictureBox1.Visible = ESTADO == 1;
                     lbl_verifique.Text = ESTADO == 1 ? "VERIFICADO POR: " + _CRED.usr_logged.ToString() : "Huella NO Verificada";
                     lbl_verifique.ForeColor = ESTADO == 1 ? Color.Green : Color.Red;
-                    btn_confirmar.Enabled = ESTADO == 1 ? true : false;
+                    btn_confirmar.Enabled = ESTADO == 1 ? _permisos.VerificarHuellas : false;
                 }));
             }
 
@@ -304,6 +304,10 @@ namespace DDigital
             _CRED = _sender.CRED_;
             UT = new UTILIDADES();
 
+            if (!_permisos.VerificarHuellas)
+            {
+                lbl_verifique.Text = "Usted no puede verificar Huellas";
+            }
 
             _sender.CancelCaptureAndCloseReader(this.OnCaptured);
             if (!_sender.OpenReader())

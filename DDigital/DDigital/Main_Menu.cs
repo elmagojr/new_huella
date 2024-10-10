@@ -56,7 +56,6 @@ namespace DDigital
         {
             foreach (Control control in formulario.Controls)
             {
-
                 if (control is TabControl tabcontrol)
                 {
                     switch (control.Name)
@@ -64,6 +63,7 @@ namespace DDigital
                         case "tabControl1":
                             control.Enabled = _permisos.RegistrarHuellas;
                             break;
+                        case "tabControl_adminRol":
                         case "tabControlSelectMano":
                             // control.Enabled = _permisos.SeleccionarMano;                        
                             PermisosTabspages(tabcontrol, _permisos);
@@ -92,14 +92,19 @@ namespace DDigital
                     switch (control.Name)
                     {
                         case "button1":
+                        case "btn_confirmar":
                             control.Enabled = _permisos.VerificarHuellas;
                             break;
+                        
                         case "btn_lista_hue":
-                            control.Visible = _permisos.VerHuellas;
-                            break;
+                            control.Visible = _permisos.VerHuellas;      
+                            break;                                        
                         case "btn_eliminar":
-                            //control.Enabled = _permisos.EliminarHuellas;
+                            control.Enabled = _permisos.EliminarHuellas;                           
                             break;
+                     
+
+
                         case "btn_quitar":
                             //if (_permisos.AdmonUsuarios)
                             //{
@@ -116,7 +121,7 @@ namespace DDigital
 
                 }
 
-
+                
 
                 //para menus
                 if (control is MenuStrip menuStrip)
@@ -187,6 +192,19 @@ namespace DDigital
                                     default:
                                         break;
                                 }
+                            }
+
+                            if (controlPage is GroupBox)
+                            {
+                                switch (controlPage.Name)
+                                {
+                                    case "groupbox_adminRol":
+                                        controlPage.Enabled = perms.AdmonRoles;
+                                        break;
+                                    default:
+                                        break;
+                                }
+
                             }
                         }
                         break;
@@ -887,11 +905,11 @@ namespace DDigital
                     MessageBox.Show("ERROR IO0002: " + UT.HAS_ERROS("IO0002"), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     Application.Exit();
                 }
-                if (d_persona.ESTADO != "0" && CRED_.cta != "ver")
-                {
-                    MessageBox.Show("El afiliado que intenta registrar NO está Activo. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    Application.Exit();
-                }
+                //if (d_persona.ESTADO != "0" && CRED_.cta != "ver")
+                //{
+                //    MessageBox.Show("El afiliado que intenta registrar NO está Activo. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    Application.Exit();
+                //}
                 txt_nombre.Text = d_persona.NOMBRE;
                 txt_identidad.Text = d_persona.IDENTIDAD;
                 txt_tipo_per.Text = d_persona.TIPO;
@@ -912,13 +930,23 @@ namespace DDigital
                     switch (CRED_.fromAction)
                     {
                         case "1":
-                            if (wf.Es_Mancomunada(CRED_) > 1 && CRED_.cta != "ver")
+                            if (wf.Es_Mancomunada(CRED_) > 1 && CRED_.cta != "ver"  )
                             {
-                                verifica_mancomuna vm = new verifica_mancomuna();
-                                vm._sender = this;
-                                vm.ShowDialog();
-                                vm.Dispose();
-                                vm = null;
+                                if (PERMISSIONS_.VerificarMancomuna)
+                                {
+                                    verifica_mancomuna vm = new verifica_mancomuna();
+                                    vm._sender = this;
+                                    vm.ShowDialog();
+                                    vm.Dispose();
+                                    vm = null;
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Sin Acceso: No cuenta con permisos para Verificar cuentas mancomunadas", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                    Application.Exit();
+                                }
+
                             }
                             else
                             {
