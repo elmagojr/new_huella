@@ -92,7 +92,7 @@ namespace DDigital
                     switch (control.Name)
                     {
                         case "button1":
-                        case "btn_confirmar":
+                        //case "btn_confirmar":
                             control.Enabled = _permisos.VerificarHuellas;
                             break;
                         
@@ -151,7 +151,9 @@ namespace DDigital
                     {
                         menu.Enabled = false;
                     }
-
+                    break;
+                case "resetPrimeraVezToolStripMenuItem":
+                    menu.Visible = perms.AdmonRoles;
 
                     break;
                 default:
@@ -865,18 +867,34 @@ namespace DDigital
             d_persona = new DATA_PERSONA();
             PERMISSIONS_ = new PERMISOS();
             CRED_ = UT.LEER_CREDENCIALES();
-            
+            //verifica si el txt de enlace es valido 
+            if (CRED_ == null)
+            {
+                MessageBox.Show("Ocurrió un error al leer las credenciales.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.Close();
+                Application.Exit();
+            }
+            this.Text = "DDigital | " + CRED_.usr_logged;
             PERMISSIONS_ = secu.ObtenerPermisos(CRED_.usr_logged);
             int primera_vez = Properties.Settings.Default.primerVez;
+            
             if (CRED_.usr_logged.ToUpper() == "HID")
             {
                 PERMISSIONS_ = UT.permisosSuperUS;
             }
+            //verifica si es primera vez con el HID 
             if (primera_vez == 0 && CRED_.usr_logged.ToUpper() == "HID") //primera configuracion O EL HID o el alguien con privilegios?
             {
                 PrimeraVez();
+                tabControl1.Enabled = false;
             }
 
+            if (primera_vez == 0 && CRED_.usr_logged.ToUpper() != "HID") //primera configuracion O EL HID o el alguien con privilegios?
+            {
+                MessageBox.Show("Favor utilizar el usuriao del Dispositivo de Interfaz  Humana o contacte con soporte", "AVISO: PRIMERA VEZ", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.Close();
+                Application.Exit();
+            }
 
             TieneAcceso(PERMISSIONS_.Tiene_acceso);
 
@@ -1028,12 +1046,7 @@ namespace DDigital
             else
             {
                 this.Close();
-            }
-          
-
-              
-             
-          
+            }          
            
         }
 
@@ -1240,12 +1253,19 @@ namespace DDigital
                 if (CRED_.usr_logged.ToUpper() == "HID")
                 {
                     PERMISSIONS_ = UT.permisosSuperUS;
+                
                 }
                 if (PERMISSIONS_!=null)
                 {
                     AplicarPermisos(this, PERMISSIONS_);
+           
+                }
+                if (CRED_.usr_logged.ToUpper() == "HID")
+                {
+                    tabControl1.Enabled = false;
 
                 }
+
 
                 int CONTEO_HUELLAS = DeshabilitarRadios(CRED_.identidad);
 

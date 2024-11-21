@@ -668,7 +668,7 @@ namespace DDigital
 
                 if (afecctedRows > 0)
                 {
-                    MessageBox.Show($"Rol actualizado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Acceso Actualizado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //setearValores();
                     dataGridView1.ClearSelection();
                     resetVentanaUsr();

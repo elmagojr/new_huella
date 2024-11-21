@@ -58,17 +58,18 @@ namespace DDigital.Interfaz
            
 
         }
-       
+        private const int DPFJ_PROBABILITY_ONE = 0x7fffffff;
         public bool verificacion_huella(Fmd fmd1, out HUELLA huella_)
         {
             UT = new UTILIDADES();
             bool verifica = false;
+            int disimilitud = 21474;
             ODBC_CONN bd = new ODBC_CONN();
             sql = new QUERIES();
             HUELLA dh = new HUELLA();
             DataTable resultado = bd.EjecutarConsultaSelect(sql.select_toda_huella); //trae todas las huellas
             using (DataTableReader reader = resultado.CreateDataReader())
-            {
+            {             
                 while (reader.Read())
                 {
                     MemoryStream MEMORIA = new MemoryStream((byte[])reader["HUELLA"]);
@@ -79,8 +80,9 @@ namespace DDigital.Interfaz
                     if (comparativa.ResultCode != Constants.ResultCode.DP_SUCCESS)
                     {
                         verifica = false;
-                    }
-                    if (Convert.ToDouble(comparativa.Score.ToString()) == 0)
+                    }                   
+                    double score = Convert.ToDouble(comparativa.Score.ToString());
+                    if (score <= disimilitud)
                     {
 
                      
@@ -97,8 +99,7 @@ namespace DDigital.Interfaz
 
                         string usr = reader["USR_AGREGO"].ToString();
 
-                        //data general persona
-                       
+                        //data general persona                       
                         //data de su huella
                         dh._HUE_TIPO_PER = tipo_per;
                         dh._HUE_CODIGO = CODIGO;

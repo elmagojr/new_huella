@@ -272,7 +272,7 @@ namespace DDigital
                     {
                         //para personas autorizadas
                         ESTADO = wf.Verifica_firmas(huella, _CRED, 1);
-                        var mensaje = ESTADO == 1 ? "La huella pertenece a una firma autorizada" : "La huella NO coincide como persona o firma autorizada";
+                        var mensaje = ESTADO == 1 ? "La huella pertenece a una firma autorizada" : "La huella NO coincide como firma autorizada";
                         var colorTexto = ESTADO == 1 ? Color.Green : Color.Red;
                         lbl_principal.Invoke(new Action(() => lbl_principal.Text = mensaje));
                         lbl_principal.Invoke(new Action(() => lbl_principal.ForeColor = colorTexto));
